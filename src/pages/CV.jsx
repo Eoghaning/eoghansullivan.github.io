@@ -7,11 +7,13 @@ export default function CV() {
           <p className="section-sub">Background & experience</p>
         </div>
 
-        {/* Green download button – same as View Projects */}
-        <a href="/CV.pdf" download className="btn-primary">
-          <span>Download Full CV</span>
-          <span className="cv-download-arrow">↓</span>
-        </a>
+        {/* Centered download button with extra gap */}
+        <div className="cv-button-wrapper">
+          <a href="/CV.pdf" download className="btn-primary">
+            <span>Download Full CV</span>
+            <span className="cv-download-arrow">↓</span>
+          </a>
+        </div>
 
         <div className="cv-grid">
           <div className="cv-block">

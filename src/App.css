@@ -125,38 +125,46 @@ body {
 }
 .btn-outline:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.03); }
 
-/* ── HERO LINKS (as buttons) ── */
-.hero-links {
+/* ── CONTACT SECTION (text + small buttons) ── */
+.contact-section {
   display: flex;
-  gap: 12px;
-  margin-bottom: 40px;
-}
-.hero-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg3);
-  color: var(--text);
-  text-decoration: none;
-  font-family: var(--mono);
-  font-size: 13px;
-  padding: 10px 20px;
-  border-radius: 30px;
-  border: 1px solid var(--border2);
-  transition: all 0.2s ease;
-  letter-spacing: 0.02em;
-}
-.hero-links a:hover {
-  background: var(--accent2);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
 }
 
-/* ── FACE IMAGE (rectangular, now 15% smaller) ── */
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.contact-text {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text);
+  user-select: text;
+  cursor: text;
+}
+
+.btn-small {
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  border-radius: 20px !important;
+  margin-left: 12px;
+  white-space: nowrap;
+}
+
+/* ── FACE IMAGE ── */
 .face-image {
   width: 100%;
-  max-width: 340px;           /* reduced from 400px by 15% */
+  max-width: 340px;
   height: auto;
   border-radius: 16px;
   object-fit: cover;
@@ -165,7 +173,7 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* ── SKILLS CARD (bottom right) ── */
+/* ── SKILLS CARD ── */
 .skills-card {
   background: var(--bg2);
   border: 1px solid var(--border);
@@ -176,8 +184,6 @@ body {
   gap: 20px;
   width: 100%;
 }
-
-/* Skills heading – smaller, mono, uppercase, white */
 .skills-heading {
   font-family: var(--mono);
   font-size: 14px;
@@ -188,7 +194,6 @@ body {
   border-bottom: 1px solid var(--border2);
   padding-bottom: 8px;
 }
-
 .skill-label {
   font-family: var(--mono); font-size: 10px; color: var(--dim);
   text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 10px;
@@ -290,25 +295,11 @@ body {
 }
 .blog-preview { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-/* ── CV SECTION (updated) ── */
-.cv-download-btn {
-  display: block;
-  width: fit-content;
-  margin: 0 auto 60px auto;
-  background: var(--accent);
-  color: #080809;
-  text-decoration: none;
-  padding: 14px 28px;
-  border-radius: var(--r);
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.15s;
-  letter-spacing: 0.02em;
-}
-.cv-download-btn:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
+/* ── CV SECTION ── */
+.cv-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
 }
 .cv-download-arrow {
   font-size: 16px;
@@ -329,7 +320,7 @@ body {
 }
 .cv-block-title {
   font-family: var(--mono);
-  font-size: 20px;                    /* enlarged further from 16px → 20px */
+  font-size: 20px;
   color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -412,10 +403,26 @@ body {
   }
   .face-image {
     width: 100%;
-    max-width: 280px;          /* also scaled down for mobile */
+    max-width: 280px;
     margin-bottom: 30px;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .contact-item {
+    max-width: 100%;
   }
   .page-section { padding: 80px 20px 60px; }
   .projects-grid { grid-template-columns: 1fr; }
   .cv-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .contact-item {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .btn-small {
+    margin-left: 0;
+  }
 }

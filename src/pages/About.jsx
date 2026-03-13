@@ -7,7 +7,6 @@ const SKILLS = [
 export default function About() {
   return (
     <section id="about" className="hero-section">
-      {/* Left column: text and buttons */}
       <div className="hero-left">
         <div className="hero-tag">Computer Science · DCU</div>
         <h1 className="hero-name">Eoghan Sullivan</h1>
@@ -23,18 +22,28 @@ export default function About() {
           <button className="btn-primary" onClick={() => document.getElementById("cv")?.scrollIntoView({ behavior: "smooth" })}>
             Download CV
           </button>
+          <button className="btn-primary" onClick={() => document.getElementById("blog")?.scrollIntoView({ behavior: "smooth" })}>
+            View Blogs
+          </button>
         </div>
-        <div className="hero-links">
-          <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer">
-            💼 LinkedIn →
-          </a>
-          <a href="mailto:eoghan.sullivan4@mail.dcu.ie">
-            📧 Email →
-          </a>
+
+        {/* New contact sections: copyable text + small button */}
+        <div className="contact-section">
+          <div className="contact-item">
+            <span className="contact-text">💼 Eoghan's LinkedIn</span>
+            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small">
+              Visit
+            </a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-text">📧 eoghan.sullivan4@mail.dcu.ie</span>
+            <a href="mailto:eoghan.sullivan4@mail.dcu.ie" className="btn-primary btn-small">
+              Email
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Right column: image at top, skills below */}
       <div className="hero-right">
         <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" />
         <div className="skills-card">
