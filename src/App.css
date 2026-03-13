@@ -220,7 +220,8 @@ body {
   margin-bottom: 8px;
 }
 .section-sub {
-  font-family: var(--mono); font-size: 12px;
+  font-family: var(--mono);
+  font-size: 14px;                /* increased from 12px to 14px */
   color: var(--text);
   letter-spacing: 0.08em;
 }
