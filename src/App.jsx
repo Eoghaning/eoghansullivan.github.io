@@ -1,121 +1,192 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+const NAV_LINKS = ["About", "Projects", "Blog", "CV"];
+
+const PROJECTS = [
+  {
+    title: "SenseAIm",
+    desc: "CS2 community anti-cheat platform with ML-based gameplay analysis, social features, real-time DMs, and 53 passing tests. Built with Django/React as a 2-person team.",
+    tags: ["Django", "React", "ML", "Python"],
+  },
+  {
+    title: "VibeCoder AI",
+    desc: "Gemini-powered web app generating JavaScript code, canvas drawings, and games from natural language prompts — with conversation memory and live iframe preview.",
+    tags: ["JavaScript", "Gemini API", "AI"],
+  },
+  {
+    title: "Custom Shell (C)",
+    desc: "Unix shell from scratch in C supporting interactive and batch modes, internal commands, process forking, file redirection, and error management.",
+    tags: ["C", "Linux", "Systems"],
+  },
+];
+
+const SKILLS = [
+  { category: "Languages", items: ["Python", "Java", "JavaScript", "C", "Haskell", "Prolog", "Shell"] },
+  { category: "Web", items: ["React", "HTML/CSS", "Git"] },
+  { category: "Systems", items: ["Linux", "UNIX/GNU", "DevOps", "Windows"] },
+];
+
+const BLOG_POSTS = [
+  {
+    date: "Coming soon",
+    title: "My first post",
+    preview: "I'll be writing about tech, projects, and life as a CS student at DCU. Check back soon!",
+  },
+];
+
+export default function App() {
+  const [activeSection, setActiveSection] = useState("about");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 100);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "projects", "blog", "cv"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom > 120) {
+          setActiveSection(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false);
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className={`site ${loaded ? "loaded" : ""}`}>
+      <nav className="nav">
+        <span className="nav-logo" onClick={() => scrollTo("about")}>ES</span>
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          {NAV_LINKS.map((l) => (
+            <button
+              key={l}
+              className={`nav-link ${activeSection === l.toLowerCase() ? "active" : ""}`}
+              onClick={() => scrollTo(l)}
+            >
+              {l}
+            </button>
+          ))}
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+        <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          <span /><span /><span />
         </button>
-      </section>
+      </nav>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <section id="about" className="section hero">
+        <div className="hero-inner">
+          <div className="hero-tag">3rd Year CS @ DCU</div>
+          <h1 className="hero-name">Eoghan<br />Sullivan</h1>
+          <p className="hero-bio">
+            Computer Science student with a passion for software development and engineering.
+            Proactive learner, effective team player, and problem solver — eager to contribute
+            to innovative technology projects.
+          </p>
+          <div className="hero-actions">
+            <button className="btn-primary" onClick={() => scrollTo("projects")}>View Projects</button>
+            <button className="btn-outline" onClick={() => scrollTo("cv")}>Download CV</button>
+          </div>
+          <div className="hero-links">
+            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer">LinkedIn →</a>
+            <a href="mailto:eoghan.sullivan4@mail.dcu.ie">Email →</a>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        <div className="hero-skills">
+          {SKILLS.map((s) => (
+            <div key={s.category} className="skill-group">
+              <div className="skill-category">{s.category}</div>
+              <div className="skill-tags">
+                {s.items.map((item) => (
+                  <span key={item} className="skill-tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <section id="projects" className="section">
+        <div className="section-inner">
+          <h2 className="section-title">Projects</h2>
+          <div className="projects-grid">
+            {PROJECTS.map((p, i) => (
+              <div key={p.title} className="project-card" style={{ animationDelay: `${i * 0.07}s` }}>
+                <div className="project-number">0{i + 1}</div>
+                <h3 className="project-title">{p.title}</h3>
+                <p className="project-desc">{p.desc}</p>
+                <div className="project-tags">
+                  {p.tags.map((t) => <span key={t} className="project-tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="blog" className="section">
+        <div className="section-inner">
+          <h2 className="section-title">Blog</h2>
+          <div className="blog-list">
+            {BLOG_POSTS.map((post) => (
+              <div key={post.title} className="blog-post">
+                <span className="blog-date">{post.date}</span>
+                <h3 className="blog-title">{post.title}</h3>
+                <p className="blog-preview">{post.preview}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="cv" className="section">
+        <div className="section-inner cv-section">
+          <h2 className="section-title">CV</h2>
+          <p className="cv-desc">Download my full CV to learn more about my education, experience, and skills.</p>
+          <a href="/CV.pdf" download className="btn-primary cv-btn">Download CV (PDF)</a>
+          <div className="cv-grid">
+            <div className="cv-block">
+              <h3 className="cv-block-title">Education</h3>
+              <div className="cv-item">
+                <div className="cv-item-title">BSc Computer Science</div>
+                <div className="cv-item-sub">Dublin City University · 2023 – 2027</div>
+              </div>
+              <div className="cv-item">
+                <div className="cv-item-title">Leaving Certificate</div>
+                <div className="cv-item-sub">St. Benildus College · 445 CAO Points</div>
+              </div>
+            </div>
+            <div className="cv-block">
+              <h3 className="cv-block-title">Experience</h3>
+              <div className="cv-item">
+                <div className="cv-item-title">Cinema Operative</div>
+                <div className="cv-item-sub">Movies@Dundrum · Nov 2024 – May 2025</div>
+              </div>
+              <div className="cv-item">
+                <div className="cv-item-title">Sales Assistant</div>
+                <div className="cv-item-sub">Costcutters · Jan 2024 – Aug 2024</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <span>© 2025 Eoghan Sullivan</span>
+        <span>eoghan.sullivan4@mail.dcu.ie</span>
+      </footer>
+    </div>
+  );
 }
-
-export default App
