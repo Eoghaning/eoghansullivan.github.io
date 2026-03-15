@@ -11,9 +11,7 @@ export default function Navbar({ activeSection }) {
 
   return (
     <nav className="nav">
-      <span className="nav-logo" onClick={() => scrollTo("about")}>
-        Eoghan Sullivan Portfolio
-      </span>
+      <span className="nav-logo" onClick={() => scrollTo("about")}>ES</span>
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         {NAV_LINKS.map((l) => (
           <button
