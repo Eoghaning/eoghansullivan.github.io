@@ -1,6 +1,6 @@
 .blog-outer-box {
   background: #25252a;
-  border: 1px solid var(--border);
+  border: 1px solid var(--accent);
   border-radius: 16px;
   padding: 48px 32px;
   margin-top: 20px;
@@ -9,7 +9,7 @@
 .blog-outer-box h1 {
   font-size: clamp(32px, 4vw, 48px);
   margin-bottom: 0;
-  margin-right: 16px; /* space between heading and button */
+  margin-right: 16px;
 }
 
 .blog-list {
@@ -74,23 +74,25 @@
 }
 
 .sort-toggle {
-  background: var(--accent);
-  color: #080809;
-  border: none;
+  background: var(--bg3);
+  color: var(--accent);
+  border: 1px solid var(--accent);
   font-family: var(--sans);
   font-size: 18px;
   font-weight: 500;
   padding: 9px 21px;
   border-radius: 30px;
   cursor: pointer;
-  transition: all 0.5s; /* 0.5s delay on hover */
-  margin-left: 0; /* reset any margin */
+  transition: all 0.5s;
+  margin-left: 0;
   white-space: nowrap;
   letter-spacing: 0.02em;
 }
 
 .sort-toggle:hover {
-  opacity: 0.85;
+  background: var(--accent2);
+  color: var(--accent);
+  border-color: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -116,7 +118,6 @@
     text-align: center;
     font-size: 16px;
     padding: 8px 16px;
-    transition: all 0.5s; /* keep same delay */
   }
   .blog-card {
     max-width: 100%;
