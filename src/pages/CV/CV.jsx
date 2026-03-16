@@ -19,16 +19,17 @@ export default function CV() {
         <div className="cv-grid">
           <div className="cv-block">
             <h3 className="cv-block-title">Education</h3>
-            <div className="cv-item">
+            <div className="cv-item cv-item-first">
               <div className="cv-item-year">2023 – 2027</div>
               <div className="cv-item-title">BSc Computer Science</div>
               <div className="cv-item-sub">Dublin City University</div>
-              <div className="cv-item-detail">Grade: 2.1</div>
+              <div className="cv-detail-item">Grade: 2.1</div>
             </div>
             <div className="cv-item">
               <div className="cv-item-year">2017 – 2023</div>
               <div className="cv-item-title">Leaving Certificate</div>
-              <div className="cv-item-sub">St. Benildus College · 445 CAO Points</div>
+              <div className="cv-item-sub">St. Benildus College</div>
+              <div className="cv-detail-item">445 CAO Points</div>
             </div>
           </div>
 

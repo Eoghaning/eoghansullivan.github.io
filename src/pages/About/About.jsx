@@ -1,9 +1,22 @@
 import "./About.css";
 
 const SKILLS = [
-  { category: "Languages", items: ["Python", "Java", "JavaScript", "C", "Haskell", "Prolog", "Shell"] },
-  { category: "Web", items: ["React", "HTML/CSS", "Git", "Django"] },
-  { category: "Systems", items: ["Linux", "UNIX/GNU", "DevOps", "Windows"] },
+  { 
+    category: "Languages", 
+    items: ["Python", "Java", "JavaScript", "C", "C++", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
+  },
+  { 
+    category: "Web", 
+    items: ["React", "HTML/CSS", "Git", "Django", "GitLab"] 
+  },
+  { 
+    category: "Systems", 
+    items: ["Linux", "UNIX/GNU", "DevOps", "Windows", "Networking"] 
+  },
+  { 
+    category: "Interpersonal", 
+    items: ["Teamwork", "Communication", "Problem Solving", "Adaptability", "Time Management", "Leadership", "Critical Thinking"] 
+  },
 ];
 
 export default function About() {
@@ -31,22 +44,41 @@ export default function About() {
 
         <div className="contact-section">
           <div className="contact-item">
-            <span className="contact-text">💼 Eoghan's LinkedIn</span>
+            <span className="contact-text">💼 LinkedIn</span>
             <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small">
               Visit
             </a>
           </div>
           <div className="contact-item">
-            <span className="contact-text">📧 eoghan.sullivan4@mail.dcu.ie</span>
+            <span className="contact-text">📧 Personal Email</span>
+            <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small">
+              Email
+            </a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-text">📧 Academic Email</span>
             <a href="mailto:eoghan.sullivan4@mail.dcu.ie" className="btn-primary btn-small">
               Email
+            </a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-text">🐙 GitHub</span>
+            <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small">
+              Visit
             </a>
           </div>
         </div>
       </div>
 
       <div className="hero-right">
-        <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" />
+        <div className="image-stack">
+          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" />
+          <div className="small-images">
+            <img src="/I1.png" alt="Icon 1" className="small-image" />
+            <img src="/I2.jpg" alt="Icon 2" className="small-image" />
+            <img src="/I3.png" alt="Icon 3" className="small-image" />
+          </div>
+        </div>
         <div className="skills-card">
           <h3 className="skills-heading">Skills</h3>
           {SKILLS.map((s) => (
