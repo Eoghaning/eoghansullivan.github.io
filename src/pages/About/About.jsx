@@ -7,15 +7,15 @@ const SKILLS = [
   },
   { 
     category: "Web", 
-    items: ["React", "HTML/CSS", "Git", "Django", "GitLab"] 
+    items: ["React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab"] 
   },
   { 
-    category: "Systems", 
-    items: ["Linux", "UNIX/GNU", "DevOps", "Windows", "Networking"] 
+    category: "Systems & AI", 
+    items: ["Linux", "UNIX/GNU", "DevOps", "Windows", "Networking", "ML", "AI"] 
   },
   { 
     category: "Interpersonal", 
-    items: ["Teamwork", "Communication", "Problem Solving", "Adaptability", "Time Management", "Leadership", "Critical Thinking"] 
+    items: ["Teamwork", "Communication", "Problem Solving", "Adaptability"] 
   },
 ];
 
@@ -23,13 +23,13 @@ export default function About() {
   return (
     <section id="about" className="hero-section">
       <div className="hero-left">
-        <div className="hero-tag">Computer Science · DCU</div>
-        <h1>Eoghan Sullivan</h1>
-        <p className="hero-bio">
-          Computer Science student with a passion for software development
-          and engineering. Proactive learner, effective team player, and
-          problem solver — eager to contribute to innovative technology projects.
-        </p>
+        <div className="hero-card">
+          <div className="hero-tag">Computer Science · DCU</div>
+          <h1>Eoghan Sullivan</h1>
+          <p className="hero-bio">
+            Computer Science student with a passion for software development and engineering. Possessing a technical skillset gained through academic projects and practical application. A proactive learner and effective team player, eager to apply strong problem‑solving abilities and a collaborative mindset to contribute to innovative technology projects.
+          </p>
+        </div>
         <div className="hero-actions">
           <button className="btn-primary" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
             View Projects
@@ -44,25 +44,25 @@ export default function About() {
 
         <div className="contact-section">
           <div className="contact-item">
-            <span className="contact-text">💼 LinkedIn</span>
-            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small">
-              Visit
-            </a>
-          </div>
-          <div className="contact-item">
-            <span className="contact-text">📧 Personal Email</span>
+            <span className="contact-text">📧 Personal Email: eoghanksullivan100@gmail.com</span>
             <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small">
               Email
             </a>
           </div>
           <div className="contact-item">
-            <span className="contact-text">📧 Academic Email</span>
+            <span className="contact-text">📧 Academic Email: eoghan.sullivan4@mail.dcu.ie</span>
             <a href="mailto:eoghan.sullivan4@mail.dcu.ie" className="btn-primary btn-small">
               Email
             </a>
           </div>
           <div className="contact-item">
-            <span className="contact-text">🐙 GitHub</span>
+            <span className="contact-text">💼 LinkedIn: linkedin.com/in/eoghanksullivan</span>
+            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small">
+              Visit
+            </a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-text">🐙 GitHub: github.com/Eoghaning</span>
             <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small">
               Visit
             </a>
@@ -78,6 +78,7 @@ export default function About() {
             <img src="/I2.jpg" alt="Icon 2" className="small-image" />
             <img src="/I3.png" alt="Icon 3" className="small-image" />
           </div>
+          <img src="/I4.jpg" alt="Extra image" className="tall-image" />
         </div>
         <div className="skills-card">
           <h3 className="skills-heading">Skills</h3>
