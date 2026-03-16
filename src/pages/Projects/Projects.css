@@ -26,7 +26,8 @@
 .project-detail { font-family: var(--mono); font-size: 10px; color: var(--dim); }
 .project-title {
   font-family: var(--serif); font-size: 24px; font-weight: 700;
-  letter-spacing: -0.5px; color: var(--text); margin-bottom: 4px;
+  letter-spacing: -0.5px; color: var(--text);
+  margin-bottom: 4px;
 }
 .project-subtitle {
   font-size: 12px; color: var(--muted); font-family: var(--mono);

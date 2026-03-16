@@ -11,7 +11,7 @@ export default function About() {
     <section id="about" className="hero-section">
       <div className="hero-left">
         <div className="hero-tag">Computer Science · DCU</div>
-        <h1 className="hero-name">Eoghan Sullivan</h1>
+        <h1>Eoghan Sullivan</h1>
         <p className="hero-bio">
           Computer Science student with a passion for software development
           and engineering. Proactive learner, effective team player, and

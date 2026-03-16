@@ -29,8 +29,7 @@ export default function Projects() {
     <section id="projects" className="page-section">
       <div className="page-inner">
         <div className="section-header">
-          <h2 className="section-title">Projects</h2>
-          <p className="section-sub">Things I've built</p>
+          <h1>My Projects</h1>
         </div>
         <div className="projects-grid">
           {PROJECTS.map((p, i) => (

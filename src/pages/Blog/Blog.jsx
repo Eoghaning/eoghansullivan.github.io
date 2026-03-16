@@ -14,8 +14,8 @@ export default function Blog() {
     <section id="blog" className="page-section">
       <div className="page-inner">
         <div className="section-header">
-          <h2 className="section-title">Blog</h2>
-          <p className="section-sub">Thoughts & updates</p>
+          <h1>My Blog</h1>
+          
         </div>
         <div className="blog-list">
           {POSTS.map((post) => (

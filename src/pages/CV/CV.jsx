@@ -5,7 +5,7 @@ export default function CV() {
     <section id="cv" className="page-section">
       <div className="page-inner">
         <div className="section-header">
-          <h2 className="section-title">CV</h2>
+          <h1>My CV</h1>
           <p className="section-sub">Background & experience</p>
         </div>
 
