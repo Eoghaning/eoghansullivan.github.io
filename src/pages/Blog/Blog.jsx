@@ -1,3 +1,5 @@
+import "./Blog.css";
+
 const POSTS = [
   {
     date: "Coming soon",

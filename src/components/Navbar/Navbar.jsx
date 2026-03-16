@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Navbar.css";
 
 const NAV_LINKS = ["About", "Projects", "CV", "Blog"];
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import About from "./pages/About";
-import Projects from "./pages/Projects";
-import CV from "./pages/CV";
-import Blog from "./pages/Blog";
+import Navbar from "./components/Navbar/Navbar";
+import About from "./pages/About/About";
+import Projects from "./pages/Projects/Projects";
+import CV from "./pages/CV/CV";
+import Blog from "./pages/Blog/Blog";
 import "./App.css";
 
 export default function App() {

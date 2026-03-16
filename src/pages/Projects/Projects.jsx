@@ -1,3 +1,5 @@
+import "./Projects.css";
+
 const PROJECTS = [
   {
     title: "SenseAIm",
@@ -16,7 +18,7 @@ const PROJECTS = [
   {
     title: "Custom Shell",
     subtitle: "Unix-like Shell in C",
-    desc: "Functional Unix shell from scratch in C with Makefile build system. Supports interactive and batch modes, internal commands (cd, clr, dir, echo, help), process forking, and file redirection.",
+    desc: "Functional Unix shell from scratch in C with Makefile build system. Supports interactive and batch modes, internal commands, process forking, and file redirection.",
     tags: ["C", "Linux", "Systems"],
     detail: "Interactive + batch modes",
   },

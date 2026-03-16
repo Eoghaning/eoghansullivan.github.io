@@ -1,3 +1,5 @@
+import "./CV.css";
+
 export default function CV() {
   return (
     <section id="cv" className="page-section">
@@ -7,7 +9,6 @@ export default function CV() {
           <p className="section-sub">Background & experience</p>
         </div>
 
-        {/* Centered download button with extra gap */}
         <div className="cv-button-wrapper">
           <a href="/CV.pdf" download className="btn-primary">
             <span>Download Full CV</span>

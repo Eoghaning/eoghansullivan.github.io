@@ -1,3 +1,5 @@
+import "./About.css";
+
 const SKILLS = [
   { category: "Languages", items: ["Python", "Java", "JavaScript", "C", "Haskell", "Prolog", "Shell"] },
   { category: "Web", items: ["React", "HTML/CSS", "Git", "Django"] },
@@ -27,7 +29,6 @@ export default function About() {
           </button>
         </div>
 
-        {/* New contact sections: copyable text + small button */}
         <div className="contact-section">
           <div className="contact-item">
             <span className="contact-text">💼 Eoghan's LinkedIn</span>
