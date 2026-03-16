@@ -23,7 +23,7 @@ html { scroll-behavior: smooth; }
 
 body {
   background: linear-gradient(rgba(8,8,9,0.6), rgba(8,8,9,0.6)),
-              url('/bg.jpg') center/cover no-repeat;  /* removed 'fixed' */
+              url('/bg.jpg') center/cover no-repeat;
   color: var(--text);
   font-family: var(--sans);
   font-size: 15px;
@@ -67,6 +67,17 @@ body {
   font-size: 14px;
   color: var(--text);
   letter-spacing: 0.08em;
+}
+
+
+.hero-section h1,
+.page-section h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
 }
 
 @media (max-width: 768px) {

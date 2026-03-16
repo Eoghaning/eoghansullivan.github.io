@@ -115,3 +115,16 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Ensure CV header stacks vertically */
+.cv-header {
+  display: block !important;
+}
+.cv-header h1 {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.cv-header .section-sub {
+  display: block;
+  margin-top: 0;
+}
