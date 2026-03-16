@@ -1,6 +1,7 @@
+import { useState, useRef } from "react";
 import "./Projects.css";
 
-const PROJECTS = [
+const MAIN_PROJECTS = [
   {
     title: "SenseAIm",
     subtitle: "CS2 Anti-Cheat Platform",
@@ -24,15 +25,49 @@ const PROJECTS = [
   },
 ];
 
+const MORE_PROJECTS = [
+  {
+    title: "Portfolio Website",
+    subtitle: "React Portfolio Site",
+    desc: "Custom-built portfolio website to showcase projects, skills, and CV. Features a dark theme, responsive design, and interactive sections. Deployed via Netlify with continuous integration.",
+    tags: ["React", "JavaScript", "CSS", "Netlify"],
+    detail: "Portfolio Website",
+  },
+];
+
+const TOTAL_PROJECTS = MAIN_PROJECTS.length + MORE_PROJECTS.length;
+
 export default function Projects() {
+  const [showMore, setShowMore] = useState(false);
+  const moreHeadingRef = useRef(null);
+
+  const handleToggle = () => {
+    const nextShowMore = !showMore;
+    setShowMore(nextShowMore);
+    if (nextShowMore) {
+      setTimeout(() => {
+        if (moreHeadingRef.current) {
+          const yOffset = -80;
+          const y = moreHeadingRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+
   return (
     <section id="projects" className="page-section">
       <div className="page-inner">
         <div className="section-header">
           <h1>My Projects</h1>
+          <div className="project-count-badge">
+            Counter: {TOTAL_PROJECTS} Projects
+          </div>
         </div>
+
+        <h2 className="projects-subheading projects-subheading-main">Main Projects</h2>
         <div className="projects-grid">
-          {PROJECTS.map((p, i) => (
+          {MAIN_PROJECTS.map((p, i) => (
             <div key={p.title} className="project-card" style={{ animationDelay: `${i * 0.1}s` }}>
               <div className="project-top">
                 <span className="project-num">0{i + 1}</span>
@@ -47,6 +82,30 @@ export default function Projects() {
             </div>
           ))}
         </div>
+
+        <h2 ref={moreHeadingRef} className="projects-subheading">More Projects</h2>
+        <button className="btn-primary toggle-more-btn" onClick={handleToggle}>
+          {showMore ? "▲ Hide" : "▼ Show"}
+        </button>
+
+        {showMore && (
+          <div className="projects-grid">
+            {MORE_PROJECTS.map((p, i) => (
+              <div key={p.title} className="project-card" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="project-top">
+                  <span className="project-num">0{MAIN_PROJECTS.length + i + 1}</span>
+                  <span className="project-detail">{p.detail}</span>
+                </div>
+                <h3 className="project-title">{p.title}</h3>
+                <div className="project-subtitle">{p.subtitle}</div>
+                <p className="project-desc">{p.desc}</p>
+                <div className="project-tags">
+                  {p.tags.map((t) => <span key={t} className="project-tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
