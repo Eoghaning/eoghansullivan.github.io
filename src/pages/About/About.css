@@ -60,13 +60,13 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 23px;        /* ← Gap below the three buttons (adjust this) */
+  margin-bottom: 23px;      
 }
 .contact-section {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 8px;             /* ← Gap above the first contact item (adjust this) */
+  margin-top: 8px;             
   margin-bottom: 60px;
   width: 100%;
 }

@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* Force all text to wrap properly */
-* {
-  white-space: normal;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --bg:      #080809;
@@ -76,7 +75,6 @@ body {
   letter-spacing: 0.08em;
 }
 
-/* Unified heading styles with normal black border */
 .hero-section h1,
 .page-section h1 {
   font-size: clamp(32px, 4vw, 48px);

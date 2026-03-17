@@ -45,9 +45,10 @@ export default function Projects() {
     const nextShowMore = !showMore;
     setShowMore(nextShowMore);
     if (nextShowMore) {
+      // Only scroll when expanding (showing projects)
       setTimeout(() => {
         if (moreHeadingRef.current) {
-          const yOffset = -80;
+          const yOffset = -80; 
           const y = moreHeadingRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
           window.scrollTo({ top: y, behavior: 'smooth' });
         }
@@ -61,11 +62,12 @@ export default function Projects() {
         <div className="section-header">
           <h1>My Projects</h1>
           <div className="project-count-badge">
-            Counter: {TOTAL_PROJECTS} Projects
+            Total: {TOTAL_PROJECTS} projects
           </div>
         </div>
 
-        <h2 className="projects-subheading projects-subheading-main">Main Projects</h2>
+        <h2 style={{ textAlign: 'center' }}>Main Projects</h2>
+        <br/>
         <div className="projects-grid">
           {MAIN_PROJECTS.map((p, i) => (
             <div key={p.title} className="project-card" style={{ animationDelay: `${i * 0.1}s` }}>
@@ -83,10 +85,13 @@ export default function Projects() {
           ))}
         </div>
 
-        <h2 ref={moreHeadingRef} className="projects-subheading">More Projects</h2>
-        <button className="btn-primary toggle-more-btn" onClick={handleToggle}>
-          {showMore ? "▲ Hide" : "▼ Show"}
-        </button>
+        <br/><br/>
+        <div style={{ textAlign: 'center' }}>
+          <h2 ref={moreHeadingRef}>More Projects</h2>
+          <button className="btn-primary toggle-more-btn" onClick={handleToggle}>
+            {showMore ? "▲ Hide" : "▼ Show"}
+          </button>
+        </div>
 
         {showMore && (
           <div className="projects-grid">

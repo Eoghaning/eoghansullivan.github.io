@@ -6,7 +6,7 @@
 
 .project-card {
   background: var(--bg2);
-  border: 1px solid var(--accent);        /* changed to permanent green border */
+  border: 1px solid var(--accent);
   border-radius: 14px;
   padding: 28px;
   transition: border-color 0.2s, transform 0.2s, background 0.2s;
@@ -16,7 +16,7 @@
 }
 
 .project-card:hover {
-  border-color: var(--accent);            /* keep green (or could use a lighter green) */
+  border-color: rgba(212,240,74,0.2);
   background: var(--bg3);
   transform: translateY(-2px);
 }
@@ -94,6 +94,7 @@
   letter-spacing: 0.04em;
 }
 
+/* Section subheadings (e.g., "Main Projects", "More Projects") */
 .projects-subheading {
   font-family: var(--serif);
   font-size: 24px;
@@ -102,19 +103,24 @@
   color: var(--text);
 }
 
+/* Larger, centered main heading for the first section */
 .projects-subheading-main {
   font-size: 32px;
   text-align: center;
   margin: 60px 0 40px 0;
 }
 
+/* Toggle button under "More Projects" – now 50% width and centered */
 .toggle-more-btn {
-  padding: 7px 81px !important;
-  margin: 0 0 20px 0 !important;
+  width: 50% !important;
+  margin: 0 auto 20px auto !important;
+  padding: 12px 0 !important;
   font-size: 14px !important;
   border-radius: 30px !important;
+  text-align: center;
 }
 
+/* Project count badge – small pill for total count */
 .project-count-badge {
   display: inline-block;
   background: var(--bg3);
@@ -128,14 +134,23 @@
   margin-top: 8px;
 }
 
+/* Black border text for all headings inside the projects section */
+.page-section h1,
+.page-section h2 {
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
   .toggle-more-btn {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
+    width: 100%; /* full width on mobile for easier tapping */
+    margin: 0 0 20px 0 !important;
   }
   .project-count-badge {
     display: block;

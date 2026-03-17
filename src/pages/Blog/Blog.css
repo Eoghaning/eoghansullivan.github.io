@@ -1,5 +1,5 @@
 .blog-outer-box {
-  background: #25252a;
+  background: var(--bg3);
   border: 1px solid var(--accent);
   border-radius: 16px;
   padding: 48px 32px;
@@ -7,9 +7,8 @@
 }
 
 .blog-outer-box h1 {
-  font-size: clamp(32px, 4vw, 48px);
-  margin-bottom: 0;
-  margin-right: 16px;
+  margin: 0 0 0.5rem 0;
+  display: block;
 }
 
 .blog-list {
@@ -20,57 +19,42 @@
 }
 
 .blog-card {
-  background: var(--bg3);
-  border: 1px solid var(--border);
+  background: #25252a;
+  border: 1px solid var(--accent);
   border-radius: 8px;
-  padding: 28px 32px;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 20px 32px;
+  transition: box-shadow 0.2s;
   width: 100%;
-  max-width: 600px;
+  max-width: 900px;
 }
 
 .blog-card:hover {
-  border-color: var(--accent);
   box-shadow: 0 4px 12px rgba(212,240,74,0.1);
 }
 
-.blog-meta {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 12px;
+.clickable-heading {
+  cursor: pointer;
+  margin: 0;
+  display: block;
+  transition: color 0.2s;
 }
 
-.blog-date {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--dim);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.blog-tag {
-  font-family: var(--mono);
-  font-size: 10px;
+.clickable-heading:hover {
   color: var(--accent);
-  background: var(--accent2);
-  padding: 2px 8px;
-  border-radius: 4px;
 }
 
-.blog-title {
-  font-family: var(--serif);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  margin-bottom: 10px;
-  color: var(--text);
+.blog-date-heading {
+  font-size: 0.5em;
+  opacity: 0.8;
 }
 
 .blog-preview {
-  font-size: 14px;
   color: var(--muted);
   line-height: 1.7;
+  margin: 16px 0 0 0;
+  font-size: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border2);
 }
 
 .sort-toggle {
@@ -84,9 +68,10 @@
   border-radius: 30px;
   cursor: pointer;
   transition: all 0.5s;
-  margin-left: 0;
+  margin: 10px 0 40px 0;
   white-space: nowrap;
   letter-spacing: 0.02em;
+  display: inline-block;
 }
 
 .sort-toggle:hover {
@@ -96,31 +81,22 @@
   transform: translateY(-1px);
 }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  margin-bottom: 32px;
-}
-
 @media (max-width: 768px) {
   .blog-outer-box {
     padding: 32px 20px;
   }
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+
   .sort-toggle {
     width: 100%;
     text-align: center;
     font-size: 16px;
     padding: 8px 16px;
+    white-space: normal;
+    margin: 10px 0 30px 0;
   }
+
   .blog-card {
     max-width: 100%;
-    padding: 20px;
+    padding: 16px 20px;
   }
 }

@@ -6,7 +6,7 @@ export default function CV() {
       <div className="page-inner">
         <div className="section-header cv-header">
           <h1>CV</h1>
-          <p className="section-sub">Background & experience</p>
+          <p className="section-sub cv-subtitle-badge">Background & experience</p>
         </div>
 
         <div className="cv-button-wrapper">
