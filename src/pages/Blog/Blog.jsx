@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./Blog.css";
 
 // Import all blog posts
-import { post as post1 } from "./posts/post-2026-03-16-about-me";
-import { post as post2 } from "./posts/post-2026-03-15-previous-projects";
-import { post as post3 } from "./posts/post-2026-03-17-portfolio";
-import { post as post4 } from "./posts/post-2026-03-18-future-projects";
+import { post as post1 } from "./posts/post-15-03-2026-about-me";
+import { post as post2 } from "./posts/post-16-03-2026-previous-projects";
+import { post as post3 } from "./posts/post-17-03-2026-portfolio";
+import { post as post4 } from "./posts/post-18-03-2026-future-projects";
 
 const POSTS = [post1, post2, post3, post4];
 
