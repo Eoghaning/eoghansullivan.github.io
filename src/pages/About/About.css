@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   max-width: 500px;
+  height: 100%;
 }
 .hero-right {
   display: flex;
@@ -66,9 +67,11 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 8px;             
-  margin-bottom: 60px;
+  margin-top: 8px;
+  margin-bottom: 0;
   width: 100%;
+  flex: 1;
+  justify-content: flex-end;
 }
 .contact-item {
   display: flex;
@@ -146,7 +149,7 @@
   border: 1px solid var(--accent);
   border-radius: 16px;
   padding: 28px;
-  padding-bottom: 31px;
+  padding-bottom: 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -169,7 +172,8 @@
 }
 .skill-label {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--dim);
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -183,15 +187,15 @@
 .skill-tag {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--muted);
-  background: var(--bg3);
+  color: var(--accent);
+  background: var(--accent2);
   border: 1px solid var(--border);
   padding: 4px 10px;
-  border-radius: 5px;
+  border-radius: 0;
   transition: all 0.15s;
 }
 .skill-tag:hover {
-  color: var(--text);
+  color: var(--accent);
   border-color: var(--border2);
 }
 @media (max-width: 768px) {
@@ -202,10 +206,15 @@
   }
   .hero-left {
     max-width: 100%;
+    height: auto;
   }
   .hero-right {
     align-items: center;
     max-width: 100%;
+  }
+  .contact-section {
+    margin-bottom: 0;
+    justify-content: flex-start;
   }
   .image-stack {
     flex-direction: column;

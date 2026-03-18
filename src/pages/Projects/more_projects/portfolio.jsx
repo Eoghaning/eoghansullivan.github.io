@@ -20,7 +20,7 @@ export const project = {
       />
       
       <p>Custom-built portfolio website to showcase projects, skills, and CV. Features a dark theme, responsive design, and interactive sections. Deployed via Netlify with continuous integration. Includes project modals, blog section with expandable posts, and CV download.</p>
-      
+      <br/>
       <p>Technologies:</p>
       <ul>
         <li>React with Hooks and functional components</li>

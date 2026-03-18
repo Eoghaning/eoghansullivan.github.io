@@ -14,7 +14,7 @@ export const project = {
       <hr className="modal-divider" />
       
       <p>Community platform with ML-based gameplay analysis to detect cheating in uploaded CS2 clips. Combined traditional detection with AI predictions, plus social features — posts, reactions, comments, real-time DMs. Built as a 2-person team using Django/React with 53 passing tests.</p>
-      
+      <br/>
       <p>Key features:</p>
       <ul>
         <li>ML model trained on 10k+ clips</li>

@@ -14,7 +14,7 @@ export const project = {
       <hr className="modal-divider" />
       
       <p>Interactive web app using Google's Gemini API to generate JavaScript code, canvas drawings, and games from natural language prompts across three modes, with conversation memory and live iframe preview. Added random idea generator with curated prompts and mode-specific validation rules for reliable output.</p>
-      
+      <br/>
       <p>Modes:</p>
       <ul>
         <li>Code mode – generate JavaScript snippets</li>
@@ -39,6 +39,7 @@ export const project = {
         <a href="https://github.com/Eoghaning/vibecoder" target="_blank" rel="noopener noreferrer" className="modal-link">GitHub</a>
         <a href="#" target="_blank" rel="noopener noreferrer" className="modal-link">Live Demo</a>
       </div>
+     
     </>
   ),
 };

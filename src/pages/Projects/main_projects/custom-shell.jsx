@@ -14,7 +14,7 @@ export const project = {
       <hr className="modal-divider" />
       
       <p>Functional Unix shell from scratch in C with Makefile build system supporting both interactive and batch modes. Implemented core internal commands (cd, clr, dir, environ, echo, help, pause, quit) and external program execution via process forking. Added file redirection handling, error management, and comprehensive user input parsing.</p>
-      
+      <br/>
       <p>Supported commands:</p>
       <ul>
         <li>cd, clr, dir, environ, echo, help, pause, quit</li>
