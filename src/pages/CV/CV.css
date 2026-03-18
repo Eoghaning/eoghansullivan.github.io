@@ -1,17 +1,14 @@
 .cv-button-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 60px;
-}
-.cv-download-arrow {
-  font-size: 16px;
-  margin-left: 8px;
+  margin-bottom: 30px;
 }
 
 .cv-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: start;
 }
 
 .cv-block {
@@ -33,47 +30,48 @@
 
 .cv-item {
   margin-bottom: 28px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--border);
 }
 
 .cv-item:last-child {
   margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
 }
 
-.cv-item-first {
-  padding-bottom: 112px;
+.cv-divider {
+  text-align: center;
+  font-family: var(--mono);
+  color: var(--dim);
+  letter-spacing: 2px;
+  margin: 24px 0;
+  opacity: 0.6;
 }
 
 .cv-item-year {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 14px;
   color: var(--dim);
   letter-spacing: 0.08em;
   margin-bottom: 6px;
 }
 
 .cv-item-title {
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
   color: var(--text);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .cv-item-sub {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   font-family: var(--mono);
   margin-bottom: 8px;
 }
 
 .cv-detail-item {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--dim);
   line-height: 1.6;
-  padding-left: 14px;
+  padding-left: 20px;
   position: relative;
   margin-top: 4px;
 }
@@ -83,23 +81,22 @@
   position: absolute;
   left: 0;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .cv-bullets {
   list-style: none;
   margin-top: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  padding-left: 0;
 }
 
 .cv-bullets li {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--dim);
   line-height: 1.6;
-  padding-left: 14px;
+  padding-left: 20px;
   position: relative;
+  margin-bottom: 6px;
 }
 
 .cv-bullets li::before {
@@ -107,23 +104,51 @@
   position: absolute;
   left: 0;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 14px;
 }
 
-/* CV header – vertical stacking */
 .cv-header {
   display: block !important;
+  margin-bottom: 0 !important;
 }
+
 .cv-header h1 {
-  display: block;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
-/* Double-thick black border for the subtitle */
+
+.cv-subtitle-header {
+  margin-bottom: 0 !important;
+}
+
 .cv-header .section-sub {
+  font-size: 22px;
   text-shadow: -2px -2px 0 #000,
                 2px -2px 0 #000,
                -2px  2px 0 #000,
                 2px  2px 0 #000;
+  display: block;
+  margin-top: 0;
+}
+
+.download-heading {
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.download-heading-text {
+  font-family: var(--mono);
+  font-size: 22px;
+  color: var(--text);
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
+  display: inline;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary span {
+  display: inline-block;
 }
 
 @media (max-width: 768px) {

@@ -6,25 +6,33 @@ export default function CV() {
       <div className="page-inner">
         <div className="section-header cv-header">
           <h1>CV</h1>
-          <p className="section-sub cv-subtitle-badge">Background & experience</p>
+        </div>
+
+        <div className="download-heading">
+          <span className="download-heading-text">Download Full CV</span>
         </div>
 
         <div className="cv-button-wrapper">
           <a href="/CV.pdf" download className="btn-primary">
-            <span>Download Full CV</span>
-            <span className="cv-download-arrow">↓</span>
+            <span>Eoghan Sullivan CV PDF ↓</span>
           </a>
+        </div>
+
+        <div className="section-header cv-header cv-subtitle-header">
+          <p className="section-sub cv-subtitle-badge">Education & Experience</p>
         </div>
 
         <div className="cv-grid">
           <div className="cv-block">
             <h3 className="cv-block-title">Education</h3>
-            <div className="cv-item cv-item-first">
+            <div className="cv-item">
               <div className="cv-item-year">2023 – 2027</div>
               <div className="cv-item-title">BSc Computer Science</div>
               <div className="cv-item-sub">Dublin City University</div>
               <div className="cv-detail-item">Grade: 2.1</div>
+              <br/><br/><br/><br/><br/><br/>
             </div>
+            <div className="cv-divider">_______________________________________</div>
             <div className="cv-item">
               <div className="cv-item-year">2017 – 2023</div>
               <div className="cv-item-title">Leaving Certificate</div>
@@ -45,6 +53,7 @@ export default function CV() {
                 <li>Developed teamwork and time-management skills in a fast-paced environment</li>
               </ul>
             </div>
+            <div className="cv-divider">_______________________________________</div>
             <div className="cv-item">
               <div className="cv-item-year">Jan 2024 – Aug 2024</div>
               <div className="cv-item-title">Sales Assistant</div>
