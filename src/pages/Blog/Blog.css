@@ -57,6 +57,13 @@
   border-top: 1px solid var(--border2);
 }
 
+.blog-paragraph {
+  margin: 0 0 1em 0;
+}
+.blog-paragraph:last-child {
+  margin-bottom: 0;
+}
+
 .sort-toggle {
   background: var(--bg3);
   color: var(--accent);

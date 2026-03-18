@@ -1,28 +1,13 @@
 import { useState } from "react";
 import "./Blog.css";
 
-const POSTS = [
-  {
-    date: "2026-03-16",
-    title: "About Me",
-    preview: "This blog will help you to know a little bit more about me. Hi I'm Eoghan Sullivan. I am a Computer Science student at DCUwith a passion for software development and engineering. Possessing a technical skillset gained through academic projects and practical application. A proactive learner and effective team player, eager to apply strong problem‑solving abilities and a collaborative mindset to contribute to innovative technology projects.",
-  },
-  {
-    date: "2026-03-15",
-    title: "Previous Projects",
-    preview: "Looking back over some of my past projects, I only wanted to keep the best ones on my portfolio I ended up with taking 3 projects that all demonstrate different skills and technologies. I have done a lot of projects in the past but I wanted to keep the best ones on my portfolio. I have done a lot of projects in the past but I wanted to keep the best ones on my portfolio."
-  },
-  {
-    date: "2026-03-17",
-    title: "Portfolio Website",
-    preview: "Today, I have finally managed to launch my portfolio website! Built with React and deployed on Netlify, it showcases my projects, skills, and CV. It features a dark theme, responsive design, and smooth scrolling navigation. ",
-  },
-  {
-    date: "2026-03-18",
-    title: "Future Project Plans",
-    preview: "There is many projects that I would like to do in the future. I am looking into building some to reinforce my skills and to gain knowledge into new areas also. I am very keen on creating some websites or apps that people could actually use or implement in there daily lives.",
-  },
-];
+// Import all blog posts
+import { post as post1 } from "./posts/post-2026-03-16-about-me";
+import { post as post2 } from "./posts/post-2026-03-15-previous-projects";
+import { post as post3 } from "./posts/post-2026-03-17-portfolio";
+import { post as post4 } from "./posts/post-2026-03-18-future-projects";
+
+const POSTS = [post1, post2, post3, post4];
 
 export default function Blog() {
   const [sortOrder, setSortOrder] = useState("desc");
@@ -46,6 +31,15 @@ export default function Blog() {
     return new Date(dateStr).toLocaleDateString('en-GB');
   };
 
+  const renderContent = (content) => {
+    if (typeof content === "string") {
+      return content.split('\n\n').map((paragraph, idx) => (
+        <p key={idx} className="blog-paragraph">{paragraph}</p>
+      ));
+    }
+    return content; // JSX
+  };
+
   return (
     <section id="blog" className="page-section">
       <div className="page-inner">
@@ -64,7 +58,9 @@ export default function Blog() {
                   <span className="blog-date-heading">[{formatDate(post.date)}]</span> - {post.title}
                 </h2>
                 {expandedPost === index && (
-                  <p className="blog-preview">{post.preview}</p>
+                  <div className="blog-preview">
+                    {renderContent(post.content)}
+                  </div>
                 )}
               </article>
             ))}
