@@ -1,10 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Projects.css";
 
-import { project as senseaim } from './main_projects/senseaim.js';
-import { project as vibecoder } from './main_projects/vibecoder.js';
-import { project as customShell } from './main_projects/custom-shell.js';
-import { project as portfolio } from './more_projects/portfolio.js';
+import { project as senseaim } from './main_projects/senseaim.jsx';
+import { project as vibecoder } from './main_projects/vibecoder.jsx';
+import { project as customShell } from './main_projects/custom-shell.jsx';
+import { project as portfolio } from './more_projects/portfolio.jsx';
 
 const MAIN_PROJECTS = [senseaim, vibecoder, customShell];
 const MORE_PROJECTS = [portfolio];
@@ -15,6 +15,14 @@ export default function Projects() {
   const [showMore, setShowMore] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const moreHeadingRef = useRef(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [selectedProject]);
 
   const handleToggle = () => {
     const nextShowMore = !showMore;
@@ -104,13 +112,9 @@ export default function Projects() {
         <div className="modal-overlay" onClick={handleBackdropClick}>
           <div className="modal-content">
             <button className="modal-close" onClick={closeModal}>×</button>
-            <h2 className="modal-title">{selectedProject.full.title}</h2>
-            <h3 className="modal-subtitle">{selectedProject.full.subtitle}</h3>
-            <p className="modal-desc">{selectedProject.full.desc}</p>
-            <div className="modal-tags">
-              {selectedProject.full.tags.map((t) => <span key={t} className="modal-tag">{t}</span>)}
+            <div className="modal-inner">
+              {selectedProject.full}
             </div>
-            <div className="modal-detail">{selectedProject.full.detail}</div>
           </div>
         </div>
       )}
