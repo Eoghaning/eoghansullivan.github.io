@@ -85,10 +85,25 @@ body {
                 2px  2px 0 #000;
 }
 
-@media (max-width: 768px) {
-  .page-section { padding: 80px 20px 60px; }
+/* Custom scrollbar */
+html::-webkit-scrollbar {
+  width: 2px;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: #cccccc;
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff transparent;
 }
 
-body.modal-open {
-  overflow: hidden;
+@media (max-width: 768px) {
+  .page-section { padding: 80px 20px 60px; }
 }
