@@ -12,9 +12,11 @@ export default function Navbar({ activeSection }) {
 
   return (
     <nav className="nav">
-      <span className="nav-logo" onClick={() => scrollTo("about")}>
-        Eoghan Sullivan Portfolio
-      </span>
+      <div className="nav-logo" onClick={() => scrollTo("about")}>
+        <img src="/eoghanlogo.png" alt="Logo" className="nav-logo-img" />
+        </div>
+        <h2>Eoghan Sullivan Portfolio</h2>
+      
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         {NAV_LINKS.map((l) => (
           <button

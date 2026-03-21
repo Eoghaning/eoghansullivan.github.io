@@ -1,23 +1,5 @@
 import "./About.css";
-
-const SKILLS = [
-  { 
-    category: "Languages", 
-    items: ["Python", "Java", "JavaScript", "C", "C++", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
-  },
-  { 
-    category: "Web", 
-    items: ["React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab"] 
-  },
-  { 
-    category: "Systems & AI", 
-    items: ["Linux", "UNIX/GNU", "DevOps", "Windows", "Networking", "ML", "AI"] 
-  },
-  { 
-    category: "Interpersonal", 
-    items: ["Teamwork", "Communication", "Problem Solving", "Adaptability"] 
-  },
-];
+import { SKILLS } from "../../skills.js";
 
 export default function About() {
   return (
@@ -29,6 +11,14 @@ export default function About() {
           <p className="hero-bio">
             Computer Science student with a passion for software development and engineering. Possessing a technical skillset gained through academic projects and practical application. A proactive learner and effective team player, eager to apply strong problem‑solving abilities and a collaborative mindset to contribute to innovative technology projects.
           </p>
+          <br />
+          <p className="hero-bio portfolio-intro">This portfolio includes:</p>
+          <ul className="portfolio-bullets">
+            <li>A brief introduction about me and my skillset</li>
+            <li>My projects – which you can sort by technology</li>
+            <li>My CV – available for download</li>
+            <li>A blog where I share my progress and insights throughout my studies and career</li>
+          </ul>
         </div>
         <div className="hero-actions">
           <button className="btn-primary" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
@@ -44,14 +34,8 @@ export default function About() {
 
         <div className="contact-section">
           <div className="contact-item">
-            <span className="contact-text">📧 Personal Email: eoghanksullivan100@gmail.com</span>
-            <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small">
-              Email
-            </a>
-          </div>
-          <div className="contact-item">
-            <span className="contact-text">📧 Academic Email: eoghan.sullivan4@mail.dcu.ie</span>
-            <a href="mailto:eoghan.sullivan4@mail.dcu.ie" className="btn-primary btn-small">
+            <span className="contact-text">💼 Work Email: eoghansullivan.work@gmail.com</span>
+            <a href="mailto:eoghansullivan.work@gmail.com" className="btn-primary btn-small">
               Email
             </a>
           </div>
@@ -65,6 +49,12 @@ export default function About() {
             <span className="contact-text">🐙 GitHub: github.com/Eoghaning</span>
             <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small">
               Visit
+            </a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-text">📧 Personal Email: eoghanksullivan100@gmail.com</span>
+            <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small">
+              Email
             </a>
           </div>
         </div>

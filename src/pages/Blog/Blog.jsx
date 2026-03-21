@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Blog.css";
 
-// Import all blog posts
 import { post as post1 } from "./posts/post-15-03-2026-about-me";
 import { post as post2 } from "./posts/post-16-03-2026-previous-projects";
 import { post as post3 } from "./posts/post-17-03-2026-portfolio";
@@ -37,7 +36,7 @@ export default function Blog() {
         <p key={idx} className="blog-paragraph">{paragraph}</p>
       ));
     }
-    return content; // JSX
+    return content;
   };
 
   return (

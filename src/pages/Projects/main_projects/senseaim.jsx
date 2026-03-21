@@ -3,7 +3,13 @@ export const project = {
     title: "SenseAIm",
     subtitle: "CS2 Anti-Cheat Platform",
     desc: "Community platform with ML-based gameplay analysis to detect cheating in uploaded CS2 clips.",
-    tags: ["Django", "React", "Python", "ML", "AI", "GitLab", "JavaScript", "Netlify", "Teamwork", "Communication"],
+    tags: [
+      "Django", "React", "Python", "ML", "AI", "GitLab", "JavaScript", 
+      "SQLite", "Redis", "Celery", "Django Channels", "Daphne",
+      "RESTful API Design", "WebSocket Protocol", "npm", "Docker",
+      "Testing", "CI/CD", "Technical Documentation", "Agile",
+      "Teamwork", "Communication"
+    ],
     detail: "2-person team · 53 passing tests",
   },
   full: (
@@ -32,9 +38,23 @@ export const project = {
         <span className="modal-tag">AI</span>
         <span className="modal-tag">GitLab</span>
         <span className="modal-tag">JavaScript</span>
-        <span className="modal-tag">Netlify</span>
+        <span className="modal-tag">SQLite</span>
+        <span className="modal-tag">Redis</span>
+        <span className="modal-tag">Celery</span>
+        <span className="modal-tag">Django Channels</span>
+        <span className="modal-tag">Daphne</span>
+        <span className="modal-tag">RESTful API Design</span>
+        <span className="modal-tag">WebSocket Protocol</span>
+        <span className="modal-tag">npm</span>
+        <span className="modal-tag">Docker</span>
+        <span className="modal-tag">Testing</span>
+        <span className="modal-tag">CI/CD</span>
+        <span className="modal-tag">Technical Documentation</span>
+        <span className="modal-tag">Agile</span>
         <span className="modal-tag">Teamwork</span>
         <span className="modal-tag">Communication</span>
+        <span className="modal-tag">Problem Solving</span>
+        <span className="modal-tag">Adaptability</span>
       </div>
       
       <hr className="modal-divider" />
