@@ -52,9 +52,18 @@
   color: var(--muted);
   line-height: 1.7;
   margin: 16px 0 0 0;
-  font-size: 14px;
+  font-size: 18px;
   padding-top: 16px;
   border-top: 1px solid var(--border2);
+}
+
+.blog-preview ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin: 0.5em 0;
+}
+.blog-preview li {
+  margin-bottom: 0.25em;
 }
 
 .blog-paragraph {
@@ -105,5 +114,9 @@
   .blog-card {
     max-width: 100%;
     padding: 16px 20px;
+  }
+
+  .blog-preview {
+    font-size: 16px;
   }
 }

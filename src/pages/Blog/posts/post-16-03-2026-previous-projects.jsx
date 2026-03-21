@@ -3,6 +3,7 @@ export const post = {
   title: "Previous Projects",
   content: (
     <>
+      <h3>Previous Projects</h3>
       <p>A look back at my main projects:</p>
       <ul>
         <li><strong>SenseAIm</strong> – a CS2 anti-cheat platform with ML analysis</li>

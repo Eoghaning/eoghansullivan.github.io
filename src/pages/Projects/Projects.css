@@ -428,6 +428,7 @@ body.modal-open {
 .skill-search-inner {
   flex: 1;
   min-width: 80px;
+  width: 100%;
   background: transparent;
   border: none;
   outline: none;
@@ -435,28 +436,43 @@ body.modal-open {
   font-size: 15px;
   color: var(--text);
   padding: 2px 0;
+  position: relative;
+  z-index: 1;
 }
 
-.skill-search-inner::placeholder {
+.skill-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-family: var(--sans);
+  font-size: 15px;
   color: var(--dim);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+.skill-placeholder-example {
+  opacity: 0.5;
 }
 
 .skill-suggestions {
   list-style: none;
-  padding: 6px 0;
+  padding: 4px 0;
   margin: 0 auto 8px auto;
   width: 100%;
-  max-width: 550px;
+  max-width: 412px;
   background: var(--bg2);
   border: 1px solid var(--accent);
-  border-radius: 12px;
+  border-radius: 9px;
   overflow: hidden;
 }
 
 .skill-suggestion-item {
-  padding: 8px 20px;
+  padding: 6px 15px;
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 10px;
   color: var(--accent);
   cursor: pointer;
   transition: background 0.15s;

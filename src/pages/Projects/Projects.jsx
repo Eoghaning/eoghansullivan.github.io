@@ -228,15 +228,23 @@ export default function Projects() {
                 <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }}>×</button>
               </span>
             ))}
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder={skillTags.length === 0 ? "Filter by skill..." : ""}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="skill-search-inner"
-            />
+            <div style={{ position: 'relative', flex: 1, minWidth: '80px', display: 'flex', alignItems: 'center' }}>
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder=""
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="skill-search-inner"
+              />
+              {skillTags.length === 0 && inputValue === "" && (
+                <span className="skill-placeholder">
+                  Filter by skills...{" "}
+                  <span className="skill-placeholder-example">(e.g. React, Python, Django)</span>
+                </span>
+              )}
+            </div>
           </div>
           {suggestions.length > 0 && (
             <ul className="skill-suggestions">
