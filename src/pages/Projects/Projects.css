@@ -297,7 +297,7 @@ body.modal-open {
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
-  justify-content: center;
+  justify-content: flex-start;   /* changed from center */
 }
 
 .modal-tag {

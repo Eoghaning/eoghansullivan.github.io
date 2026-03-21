@@ -228,7 +228,7 @@ export default function Projects() {
                 <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }}>×</button>
               </span>
             ))}
-            <div style={{ position: 'relative', flex: 1, minWidth: '80px', display: 'flex', alignItems: 'center' }}>
+            <div style={{ position: 'relative', flex: 1, minWidth: '80px' }}>
               <input
                 ref={inputRef}
                 type="text"
@@ -241,7 +241,7 @@ export default function Projects() {
               {skillTags.length === 0 && inputValue === "" && (
                 <span className="skill-placeholder">
                   Filter by skills...{" "}
-                  <span className="skill-placeholder-example">(e.g. React, Python, Django)</span>
+                  <span className="skill-placeholder-example">(e.g. React, Python, Docker)</span>
                 </span>
               )}
             </div>
