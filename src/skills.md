@@ -6,3 +6,5 @@ Python, JavaScript, React, Django, HTML/CSS, Git, GitHub, GitLab, SQLite, Redis,
 
 Skills NOT yet in a project:
 Java, TypeScript, C++, R, SQL, Haskell, Prolog, MATLAB, Bash, UNIX/GNU, DevOps, Windows, Networking, MLOps, OpenCV, PyTorch, Leadership, Time Management, Critical Thinking, Creativity
+
+afjdljaf
