@@ -282,7 +282,21 @@ body.modal-open {
 }
 
 .modal-inner p {
-  margin-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+
+.modal-inner ul {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.modal-inner li {
+  margin-bottom: 0.25em;
+}
+
+/* Add double space after images */
+.modal-inner img {
+  margin-bottom: 2em;
 }
 
 .modal-divider {
@@ -341,7 +355,7 @@ body.modal-open {
   list-style-type: disc;
   list-style-position: outside;
   padding-left: 50px;
-  margin: 0 0 1.5em 0;
+  margin: 0.5em 0 1em 0;
 }
 
 .modal-inner li {

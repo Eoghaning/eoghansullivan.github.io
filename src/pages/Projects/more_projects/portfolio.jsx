@@ -1,9 +1,14 @@
+import portfolioImg from "../pics/portfolio-screenshot.jpg"; // adjust filename if needed
+
 export const project = {
   preview: {
     title: "Portfolio Website",
     subtitle: "React Portfolio Site",
     desc: "Custom-built portfolio website to showcase projects, skills, and CV.",
-    tags: ["React", "JavaScript", "CSS", "Netlify", "HTML/CSS", "Git", "GitHub"],
+    tags: [
+      "React", "JavaScript", "CSS", "Netlify", "HTML/CSS", "Git", "GitHub",
+      "npm", "DevOps", "Technical Documentation", "Creativity"
+    ],
     detail: "Portfolio Website",
   },
   full: (
@@ -13,14 +18,14 @@ export const project = {
       
       <hr className="modal-divider" />
       
+      <p>Custom-built portfolio website to showcase projects, skills, and CV. Features a dark theme, responsive design, and interactive sections. Deployed via Netlify with continuous integration. Includes project modals, blog section with expandable posts, and CV download.</p>
+      
       <img 
-        src="/images/portfolio-screenshot.jpg" 
+        src={portfolioImg} 
         alt="Portfolio screenshot" 
         style={{ maxWidth: '80%', borderRadius: '8px', margin: '1em auto', display: 'block', border: '2px solid var(--accent)' }} 
       />
       
-      <p>Custom-built portfolio website to showcase projects, skills, and CV. Features a dark theme, responsive design, and interactive sections. Deployed via Netlify with continuous integration. Includes project modals, blog section with expandable posts, and CV download.</p>
-      <br/>
       <p>Technologies:</p>
       <ul>
         <li>React with Hooks and functional components</li>
@@ -38,13 +43,17 @@ export const project = {
         <span className="modal-tag">HTML/CSS</span>
         <span className="modal-tag">Git</span>
         <span className="modal-tag">GitHub</span>
+        <span className="modal-tag">npm</span>
+        <span className="modal-tag">DevOps</span>
+        <span className="modal-tag">Technical Documentation</span>
+        <span className="modal-tag">Creativity</span>
       </div>
       
       <hr className="modal-divider" />
       
       <div className="modal-links">
-        <a href="https://github.com/Eoghaning/portfolio" target="_blank" rel="noopener noreferrer" className="modal-link">GitHub Repo</a>
         <a href="https://eoghansullivan.netlify.app" target="_blank" rel="noopener noreferrer" className="modal-link">Live Site</a>
+        <a href="https://github.com/Eoghaning/eoghansullivan.github.io" target="_blank" rel="noopener noreferrer" className="modal-link">GitHub Repo</a>
       </div>
     </>
   ),

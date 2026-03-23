@@ -39,3 +39,4 @@ export const project = {
     </>
   ),
 };
+//  <img src={vibeCoderImg} alt="VibeCoder AI screenshot" style={{ maxWidth: '100%', maxHeight: '80%', borderRadius: '8px', margin: '1em auto', display: 'block', border: '2px solid var(--accent)' }}/>
