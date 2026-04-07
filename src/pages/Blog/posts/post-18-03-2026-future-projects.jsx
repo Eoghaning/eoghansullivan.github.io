@@ -8,4 +8,4 @@ export const post = {
       <p>Each of these will help me reinforce my skills and explore new areas like real‑time interactions, mobile development, and user experience design. I look forward to sharing the progress here.</p>
     </>
   ),
-};
+};    
