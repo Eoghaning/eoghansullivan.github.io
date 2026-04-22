@@ -4,6 +4,10 @@ export const SKILLS = [
     items: ["Python", "Java", "JavaScript", "TypeScript", "C", "C++", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
   },
   { 
+    category: "Libraries", 
+    items: ["Pandas", "Matplotlib", "NumPy", "SHAP"] 
+  },
+  { 
     category: "Web", 
     items: [
       "React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab", "Netlify",

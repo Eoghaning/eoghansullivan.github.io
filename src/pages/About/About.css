@@ -48,6 +48,7 @@
 }
 .hero-section h1 {
   margin-bottom: 24px;
+  font-size: 3.5rem;
 }
 .hero-bio {
   color: var(--muted);
@@ -59,10 +60,13 @@
   word-wrap: break-word;
 }
 .portfolio-intro {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
+  display: block;
+  font-weight: 700;
+  text-decoration: underline;
 }
 .portfolio-bullets {
-  margin-top: 0;
+  margin-top: 0.5em;
   padding-left: 1.5em;
   list-style-type: disc;
   color: var(--muted);
@@ -80,7 +84,8 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 23px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 .contact-section {
   display: flex;
@@ -271,6 +276,8 @@
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   .contact-item {
     max-width: 100%;

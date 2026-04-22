@@ -1,7 +1,11 @@
 import { useState } from "react";
 import "./Navbar.css";
 
-const NAV_LINKS = ["About", "Projects", "CV", "Blog"];
+const NAV_LINKS = [
+  { label: "View Projects", section: "Projects" },
+  { label: "Download CV", section: "CV" },
+  { label: "View Blogs", section: "Blog" }
+];
 
 const scrollTo = (id) => {
   document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
@@ -20,11 +24,11 @@ export default function Navbar({ activeSection }) {
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         {NAV_LINKS.map((l) => (
           <button
-            key={l}
-            className={`nav-link ${activeSection === l.toLowerCase() ? "active" : ""}`}
-            onClick={() => { scrollTo(l); setMenuOpen(false); }}
+            key={l.label}
+            className={`nav-link ${activeSection === l.section.toLowerCase() ? "active" : ""}`}
+            onClick={() => { scrollTo(l.section); setMenuOpen(false); }}
           >
-            {l}
+            {l.label}
           </button>
         ))}
       </div>

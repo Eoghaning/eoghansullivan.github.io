@@ -6,9 +6,11 @@ import { project as senseaim } from './main_projects/senseaim.jsx';
 import { project as vibecoder } from './main_projects/vibecoder.jsx';
 import { project as customShell } from './main_projects/custom-shell.jsx';
 import { project as portfolio } from './more_projects/portfolio.jsx';
+import { project as lifestyleAnalysis } from './more_projects/lifestyle-analysis.jsx';
+import { project as algorithmAnimator } from './more_projects/algorithm-animator.jsx';
 
 const MAIN_PROJECTS = [senseaim, vibecoder, customShell];
-const MORE_PROJECTS = [portfolio];
+const MORE_PROJECTS = [portfolio, lifestyleAnalysis, algorithmAnimator];
 
 const TAG_ALIASES = {
   "machine learning":        "ML",

@@ -60,6 +60,8 @@
   letter-spacing: -0.5px;
   color: var(--accent);
   margin-bottom: 4px;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .project-subtitle {

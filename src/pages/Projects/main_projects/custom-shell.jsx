@@ -57,7 +57,7 @@ export const project = {
       <hr className="modal-divider" />
       
       <div className="modal-links">
-        <a href="https://github.com/Eoghaning/custom-shell" target="_blank" rel="noopener noreferrer" className="modal-link">GitHub</a>
+        <a href="https://github.com/Eoghaning/CustomShell" target="_blank" rel="noopener noreferrer" className="modal-link">GitHub</a>
       </div>
     </>
   ),
