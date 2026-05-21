@@ -1,6 +1,8 @@
 ---
 date: 2026-03-16
 title: About Me
+tags:
+  - Personal
 ---
 
 Hey there! I'm Eoghan Sullivan, a Computer Science student at Dublin City University. I've always been fascinated by how code can turn ideas into reality—whether it's building a full‑stack platform, experimenting with AI, or diving into low‑level systems programming.

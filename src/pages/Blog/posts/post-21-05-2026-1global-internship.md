@@ -1,6 +1,8 @@
 ---
 date: 2026-05-21
 title: Starting at 1GLOBAL — Mobile Network Testing Intern
+tags:
+  - Work
 ---
 
 I was excited to post this on LinkedIn to mark the start of a new chapter:

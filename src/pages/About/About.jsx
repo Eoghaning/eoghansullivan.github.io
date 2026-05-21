@@ -35,25 +35,25 @@ export default function About() {
         <div className="contact-section">
           <div className="contact-item">
             <span className="contact-text">💼 Work Email: eoghansullivan.work@gmail.com</span>
-            <a href="mailto:eoghansullivan.work@gmail.com" className="btn-primary btn-small">
+            <a href="mailto:eoghansullivan.work@gmail.com" className="btn-primary btn-small" aria-label="Email eoghansullivan.work@gmail.com">
               Email
             </a>
           </div>
           <div className="contact-item">
             <span className="contact-text">💼 LinkedIn: linkedin.com/in/eoghanksullivan</span>
-            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small">
+            <a href="https://www.linkedin.com/in/eoghanksullivan" target="_blank" rel="noreferrer" className="btn-primary btn-small" aria-label="LinkedIn profile">
               Visit
             </a>
           </div>
           <div className="contact-item">
             <span className="contact-text">🐙 GitHub: github.com/Eoghaning</span>
-            <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small">
+            <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small" aria-label="GitHub profile">
               Visit
             </a>
           </div>
           <div className="contact-item">
             <span className="contact-text">📧 Personal Email: eoghanksullivan100@gmail.com</span>
-            <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small">
+            <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small" aria-label="Email eoghanksullivan100@gmail.com">
               Email
             </a>
           </div>
@@ -62,13 +62,13 @@ export default function About() {
 
       <div className="hero-right">
         <div className="image-stack">
-          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" />
+          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" loading="lazy" />
           <div className="small-images">
-            <img src="/I1.png" alt="Icon 1" className="small-image" />
-            <img src="/I2.jpg" alt="Icon 2" className="small-image" />
-            <img src="/I3.png" alt="Icon 3" className="small-image" />
+            <img src="/I1.png" alt="Decorative icon" className="small-image" loading="lazy" />
+            <img src="/I2.jpg" alt="Decorative icon" className="small-image" loading="lazy" />
+            <img src="/I3.png" alt="Decorative icon" className="small-image" loading="lazy" />
           </div>
-          <img src="/I4.jpg" alt="Extra image" className="tall-image" />
+          <img src="/I4.jpg" alt="Decorative image" className="tall-image" loading="lazy" />
         </div>
         <div className="skills-card">
           <h3 className="skills-heading">Skills</h3>

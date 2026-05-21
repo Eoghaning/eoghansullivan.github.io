@@ -9,6 +9,12 @@
   background: rgba(8,8,9,0.92);
   backdrop-filter: blur(20px);
   border: 1px solid var(--accent);
+  transition: height 0.3s, padding 0.3s, box-shadow 0.3s;
+}
+
+.nav--scrolled {
+  height: 56px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
 .nav-logo {
@@ -27,6 +33,11 @@
 .nav-logo-img {
   height: 56px;
   width: auto;
+  transition: height 0.3s;
+}
+
+.nav--scrolled .nav-logo-img {
+  height: 40px;
 }
 
 .nav h2 {
@@ -69,6 +80,29 @@
   background: var(--accent2);
 }
 
+.theme-toggle {
+  background: var(--bg2);
+  border: 1px solid #888;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-left: auto;
+  font-size: 18px;
+  line-height: 1;
+  width: 88px;
+  text-align: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  background: var(--accent2);
+  transform: translateY(-1px);
+}
+
+body.light-mode .theme-toggle {
+  border-color: var(--accent);
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -86,6 +120,17 @@
   height: 1.5px;
   background: var(--text);
   border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {

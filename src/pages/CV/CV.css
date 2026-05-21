@@ -122,10 +122,6 @@
 
 .cv-header .section-sub {
   font-size: 22px;
-  text-shadow: -2px -2px 0 #000,
-                2px -2px 0 #000,
-               -2px  2px 0 #000,
-                2px  2px 0 #000;
   display: block;
   margin-top: 0;
 }
@@ -139,10 +135,6 @@
   font-family: var(--mono);
   font-size: 22px;
   color: var(--text);
-  text-shadow: -2px -2px 0 #000,
-                2px -2px 0 #000,
-               -2px  2px 0 #000,
-                2px  2px 0 #000;
   display: inline;
   letter-spacing: 0.02em;
 }

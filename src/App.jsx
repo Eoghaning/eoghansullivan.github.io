@@ -8,6 +8,9 @@ import "./App.css";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("about");
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [navbarScrolled, setNavbarScrolled] = useState(false);
+  const [isLight, setIsLight] = useState(() => localStorage.getItem('theme') === 'light');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,18 +24,33 @@ export default function App() {
           break;
         }
       }
+      setShowBackToTop(window.scrollY > 400);
+      setNavbarScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('light-mode', isLight);
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  }, [isLight]);
+
   return (
     <div className="site">
-      <Navbar activeSection={activeSection} />
+      <a href="#about" className="skip-link">Skip to content</a>
+      <Navbar activeSection={activeSection} scrolled={navbarScrolled} isLight={isLight} setIsLight={setIsLight} />
       <About />
       <Projects />
       <CV />
       <Blog />
+      <button
+        className={"back-to-top" + (showBackToTop ? " visible" : "")}
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        aria-label="Back to top"
+      >
+        &#8593;
+      </button>
     </div>
   );
 }

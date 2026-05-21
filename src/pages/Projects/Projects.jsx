@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import "./Projects.css";
 import ReactMarkdown from "react-markdown";
 import { parse as parseYaml } from "yaml";
@@ -72,6 +72,8 @@ export default function Projects() {
   const [notFound, setNotFound] = useState(false);
   const inputRef = useRef(null);
   const moreHeadingRef = useRef(null);
+  const modalRef = useRef(null);
+  const announceRef = useRef(null);
 
   const allTags = useMemo(() => {
     const tagSet = new Set(ALL_SKILL_ITEMS);
@@ -112,6 +114,38 @@ export default function Projects() {
     setSuggestions(combined.slice(0, 5));
   }, [inputValue, skillTags]);
 
+  useEffect(() => {
+    if (announceRef.current && skillTags.length > 0) {
+      announceRef.current.textContent = `Filtering by ${skillTags.length} skill${skillTags.length > 1 ? 's' : ''}`;
+    }
+  }, [skillTags]);
+
+  useEffect(() => {
+    if (!selectedProject || !modalRef.current) return;
+    const modal = modalRef.current;
+    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const handleKeyDown = (e) => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    modal.addEventListener('keydown', handleKeyDown);
+    first.focus();
+    return () => modal.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject]);
+
   const addTag = (rawInput) => {
     const trimmed = rawInput.trim();
     if (!trimmed) return;
@@ -132,6 +166,9 @@ export default function Projects() {
     setSkillTags(prev => prev.filter((_, i) => i !== index));
     setNotFound(false);
     inputRef.current?.focus();
+    if (announceRef.current) {
+      announceRef.current.textContent = 'Skill removed';
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -188,6 +225,20 @@ export default function Projects() {
     }
   };
 
+  const relatedProjects = useMemo(() => {
+    if (!selectedProject) return [];
+    const currentTags = selectedProject.tags || [];
+    return ALL_PROJECTS
+      .filter(p => p.title !== selectedProject.title)
+      .map(p => ({
+        ...p,
+        _matchCount: (p.tags || []).filter(t => currentTags.includes(t)).length,
+      }))
+      .filter(p => p._matchCount > 0)
+      .sort((a, b) => b._matchCount - a._matchCount)
+      .slice(0, 3);
+  }, [selectedProject]);
+
   const renderProjectCard = (project, index, baseNumber) => {
     const allTags = project.tags || [];
     const MAX_VISIBLE_TAGS = 5;
@@ -200,6 +251,8 @@ export default function Projects() {
         className="project-card clickable-card"
         onClick={() => openModal(project)}
         style={{ animationDelay: `${index * 0.1}s` }}
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(project); } }}
       >
         <div className="project-top">
           <span className="project-num">0{baseNumber + index + 1}</span>
@@ -222,6 +275,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="page-section">
+      <div aria-live="polite" aria-atomic="true" ref={announceRef} className="sr-only" />
       <div className="page-inner">
         <div className="section-header">
           <h1>
@@ -242,7 +296,7 @@ export default function Projects() {
             {skillTags.map((tag, i) => (
               <span key={i} className="skill-chip">
                 {tag}
-                <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }}>×</button>
+                <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }} tabIndex={0}>×</button>
               </span>
             ))}
             <div style={{ position: 'relative', flex: 1, minWidth: '80px' }}>
@@ -264,9 +318,9 @@ export default function Projects() {
             </div>
           </div>
           {suggestions.length > 0 && (
-            <ul className="skill-suggestions">
+            <ul className="skill-suggestions" role="listbox">
               {suggestions.map((s, i) => (
-                <li key={i} className="skill-suggestion-item" onMouseDown={() => addTag(s)}>
+                <li key={i} className="skill-suggestion-item" role="option" tabIndex={0} onMouseDown={() => addTag(s)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(s); } }}>
                   {s}
                 </li>
               ))}
@@ -304,9 +358,9 @@ export default function Projects() {
       </div>
 
       {selectedProject && (
-        <div className="modal-overlay" onClick={handleBackdropClick}>
+        <div className="modal-overlay" onClick={handleBackdropClick} ref={modalRef} tabIndex={-1}>
           <div className="modal-content">
-            <button className="modal-close" onClick={closeModal}>×</button>
+            <button className="modal-close" onClick={closeModal} aria-label="Close modal">×</button>
             <div className="modal-inner">
               <h2 className="modal-title">{selectedProject.title}</h2>
               <h3 className="modal-subtitle">{selectedProject.subtitle}</h3>
@@ -315,7 +369,7 @@ export default function Projects() {
               <ReactMarkdown
                 components={{
                   img: ({ src, alt }) => (
-                    <img src={imageLookup[src] || src} alt={alt || ''} />
+                    <img src={imageLookup[src] || src} alt={alt || ''} loading="lazy" />
                   ),
                 }}
               >
@@ -339,6 +393,20 @@ export default function Projects() {
                   </a>
                 ))}
               </div>
+
+              {relatedProjects.length > 0 && (
+                <>
+                  <hr className="modal-divider" />
+                  <div className="modal-related">
+                    <span className="modal-related-title">More Like This</span>
+                    {relatedProjects.map(rp => (
+                      <button key={rp.title} className="modal-related-item" onClick={() => openModal(rp)}>
+                        {rp.title} <span className="modal-related-sub">{rp.subtitle}</span>
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

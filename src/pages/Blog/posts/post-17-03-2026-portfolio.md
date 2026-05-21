@@ -1,6 +1,8 @@
 ---
 date: 2026-03-17
 title: Portfolio Website
+tags:
+  - Projects
 ---
 
 ### Portfolio Website
