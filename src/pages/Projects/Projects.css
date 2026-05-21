@@ -296,9 +296,24 @@ body.modal-open {
   margin-bottom: 0.25em;
 }
 
-/* Add double space after images */
+.modal-inner li img {
+  display: inline;
+  vertical-align: middle;
+  max-width: 88px;
+  margin: 0 0 2px 8px;
+}
+.modal-inner li img[alt="Jupyter"] {
+  max-width: 44px;
+}
+.modal-inner li img[alt="Matplotlib"] {
+  max-width: 176px;
+}
 .modal-inner img {
-  margin-bottom: 2em;
+  max-width: 80%;
+  border-radius: 8px;
+  margin: 1em auto;
+  display: block;
+  border: 2px solid var(--accent);
 }
 
 .modal-divider {

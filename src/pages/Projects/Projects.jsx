@@ -1,16 +1,32 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import "./Projects.css";
+import ReactMarkdown from "react-markdown";
+import { parse as parseYaml } from "yaml";
 import { ALL_SKILL_ITEMS } from "../../skills.js";
 
-import { project as senseaim } from './main_projects/senseaim.jsx';
-import { project as vibecoder } from './main_projects/vibecoder.jsx';
-import { project as customShell } from './main_projects/custom-shell.jsx';
-import { project as portfolio } from './more_projects/portfolio.jsx';
-import { project as lifestyleAnalysis } from './more_projects/lifestyle-analysis.jsx';
-import { project as algorithmAnimator } from './more_projects/algorithm-animator.jsx';
+function parseFrontMatter(raw) {
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return { attributes: {}, body: raw };
+  return { attributes: parseYaml(match[1]), body: match[2] };
+}
 
-const MAIN_PROJECTS = [senseaim, vibecoder, customShell];
-const MORE_PROJECTS = [portfolio, lifestyleAnalysis, algorithmAnimator];
+const projectFiles = import.meta.glob('/src/pages/Projects/content/*.md', { eager: true, query: '?raw', import: 'default' });
+
+const imageFiles = import.meta.glob('/src/pages/Projects/pics/*.{jpg,png,gif,svg,webp}', { eager: true });
+
+const imageLookup = {};
+for (const [key, mod] of Object.entries(imageFiles)) {
+  const filename = key.split('/').pop();
+  imageLookup[filename] = mod.default;
+}
+
+const ALL_PROJECTS = Object.entries(projectFiles).map(([path, raw]) => {
+  const { attributes, body } = parseFrontMatter(raw);
+  return { ...attributes, content: body };
+});
+
+const MAIN_PROJECTS = ALL_PROJECTS.filter(p => p.type === 'main');
+const MORE_PROJECTS = ALL_PROJECTS.filter(p => p.type === 'more');
 
 const TAG_ALIASES = {
   "machine learning":        "ML",
@@ -59,8 +75,8 @@ export default function Projects() {
 
   const allTags = useMemo(() => {
     const tagSet = new Set(ALL_SKILL_ITEMS);
-    [...MAIN_PROJECTS, ...MORE_PROJECTS].forEach(p =>
-      p.preview.tags.forEach(t => tagSet.add(t))
+    ALL_PROJECTS.forEach(p =>
+      (p.tags || []).forEach(t => tagSet.add(t))
     );
     return [...tagSet];
   }, []);
@@ -138,7 +154,7 @@ export default function Projects() {
     const terms = skillTags.map(t => t.toLowerCase());
     return projects.filter(project =>
       terms.every(term =>
-        project.preview.tags.some(tag => tag.toLowerCase() === term)
+        (project.tags || []).some(tag => tag.toLowerCase() === term)
       )
     );
   };
@@ -173,26 +189,25 @@ export default function Projects() {
   };
 
   const renderProjectCard = (project, index, baseNumber) => {
-    const p = project.preview;
-    const allTags = p.tags;
+    const allTags = project.tags || [];
     const MAX_VISIBLE_TAGS = 5;
     const visibleTags = allTags.slice(0, MAX_VISIBLE_TAGS);
     const remaining = allTags.length - MAX_VISIBLE_TAGS;
 
     return (
       <div
-        key={p.title}
+        key={project.title}
         className="project-card clickable-card"
         onClick={() => openModal(project)}
         style={{ animationDelay: `${index * 0.1}s` }}
       >
         <div className="project-top">
           <span className="project-num">0{baseNumber + index + 1}</span>
-          <span className="project-detail">{p.detail}</span>
+          <span className="project-detail">{project.detail}</span>
         </div>
-        <h3 className="project-title">{p.title}</h3>
-        <div className="project-subtitle">{p.subtitle}</div>
-        <p className="project-desc">{p.desc}</p>
+        <h3 className="project-title">{project.title}</h3>
+        <div className="project-subtitle">{project.subtitle}</div>
+        <p className="project-desc">{project.desc}</p>
         <div className="project-tags">
           {visibleTags.map((t) => (
             <span key={t} className="project-tag">{t}</span>
@@ -214,7 +229,7 @@ export default function Projects() {
           </h1>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
             <div className="project-count-badge">
-              Total: {MAIN_PROJECTS.length + MORE_PROJECTS.length} projects
+              Total: {ALL_PROJECTS.length} projects
             </div>
             <div className="project-count-badge project-count-badge--filtered">
               Filtered: {totalFiltered} projects
@@ -293,7 +308,37 @@ export default function Projects() {
           <div className="modal-content">
             <button className="modal-close" onClick={closeModal}>×</button>
             <div className="modal-inner">
-              {selectedProject.full}
+              <h2 className="modal-title">{selectedProject.title}</h2>
+              <h3 className="modal-subtitle">{selectedProject.subtitle}</h3>
+              <hr className="modal-divider" />
+
+              <ReactMarkdown
+                components={{
+                  img: ({ src, alt }) => (
+                    <img src={imageLookup[src] || src} alt={alt || ''} />
+                  ),
+                }}
+              >
+                {selectedProject.content}
+              </ReactMarkdown>
+
+              <hr className="modal-divider" />
+
+              <div className="modal-tags">
+                {(selectedProject.tags || []).map(tag => (
+                  <span key={tag} className="modal-tag">{tag}</span>
+                ))}
+              </div>
+
+              <hr className="modal-divider" />
+
+              <div className="modal-links">
+                {Object.entries(selectedProject.links || {}).map(([label, url]) => (
+                  <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="modal-link">
+                    {label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -1,12 +1,28 @@
 import { useState } from "react";
 import "./Blog.css";
+import ReactMarkdown from "react-markdown";
+import { parse as parseYaml } from "yaml";
 
-import { post as post1 } from "./posts/post-15-03-2026-about-me";
-import { post as post2 } from "./posts/post-16-03-2026-previous-projects";
-import { post as post3 } from "./posts/post-17-03-2026-portfolio";
-import { post as post4 } from "./posts/post-18-03-2026-future-projects";
+function parseFrontMatter(raw) {
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return { attributes: {}, body: raw };
+  return { attributes: parseYaml(match[1]), body: match[2] };
+}
 
-const POSTS = [post1, post2, post3, post4];
+const postFiles = import.meta.glob('/src/pages/Blog/posts/*.md', { eager: true, query: '?raw', import: 'default' });
+
+const imageFiles = import.meta.glob('/src/pages/Blog/pics/*.{jpg,png,gif,svg,webp}', { eager: true });
+
+const imageLookup = {};
+for (const [key, mod] of Object.entries(imageFiles)) {
+  const filename = key.split('/').pop();
+  imageLookup[filename] = mod.default;
+}
+
+const POSTS = Object.entries(postFiles).map(([path, raw]) => {
+  const { attributes, body } = parseFrontMatter(raw);
+  return { ...attributes, content: body };
+});
 
 export default function Blog() {
   const [sortOrder, setSortOrder] = useState("desc");
@@ -30,15 +46,6 @@ export default function Blog() {
     return new Date(dateStr).toLocaleDateString('en-GB');
   };
 
-  const renderContent = (content) => {
-    if (typeof content === "string") {
-      return content.split('\n\n').map((paragraph, idx) => (
-        <p key={idx} className="blog-paragraph">{paragraph}</p>
-      ));
-    }
-    return content;
-  };
-
   return (
     <section id="blog" className="page-section">
       <div className="page-inner">
@@ -58,7 +65,15 @@ export default function Blog() {
                 </h2>
                 {expandedPost === index && (
                   <div className="blog-preview">
-                    {renderContent(post.content)}
+                    <ReactMarkdown
+                      components={{
+                        img: ({ src, alt }) => (
+                          <img src={imageLookup[src] || src} alt={alt || ''} />
+                        ),
+                      }}
+                    >
+                      {post.content}
+                    </ReactMarkdown>
                   </div>
                 )}
               </article>
