@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import "./Navbar.css";
 
 const NAV_LINKS = [
@@ -11,7 +12,7 @@ const scrollTo = (id) => {
   document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
 };
 
-export default function Navbar({ activeSection, scrolled, isLight, setIsLight }) {
+export default function Navbar({ activeSection, scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -32,9 +33,7 @@ export default function Navbar({ activeSection, scrolled, isLight, setIsLight })
           </button>
         ))}
       </div>
-      <button className={"theme-toggle"} onClick={() => setIsLight(!isLight)} title={isLight ? "Switch to dark mode" : "Switch to light mode"}>
-        {isLight ? "\u{1F319}" : "\u{2600}\u{FE0F}"}
-      </button>
+      <ThemeToggle />
       <button className={"hamburger" + (menuOpen ? " open" : "")} onClick={() => setMenuOpen(!menuOpen)}>
         <span /><span /><span />
       </button>

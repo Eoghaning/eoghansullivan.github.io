@@ -10,8 +10,6 @@ export default function App() {
   const [activeSection, setActiveSection] = useState("about");
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [navbarScrolled, setNavbarScrolled] = useState(false);
-  const [isLight, setIsLight] = useState(() => localStorage.getItem('theme') === 'light');
-
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["about", "projects", "cv", "blog"];
@@ -32,14 +30,26 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle('light-mode', isLight);
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  }, [isLight]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.fade-slide-in').forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="site">
       <a href="#about" className="skip-link">Skip to content</a>
-      <Navbar activeSection={activeSection} scrolled={navbarScrolled} isLight={isLight} setIsLight={setIsLight} />
+      <Navbar activeSection={activeSection} scrolled={navbarScrolled} />
       <About />
       <Projects />
       <CV />

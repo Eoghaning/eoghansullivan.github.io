@@ -20,7 +20,7 @@
 
 .blog-card {
   border-radius: 8px;
-  padding: 20px 32px;
+  padding: 13px 32px;
   transition: box-shadow 0.2s;
   width: 100%;
   max-width: 900px;
@@ -283,7 +283,7 @@ body.light-mode .blog-card:nth-child(5) { background: #f2ede2; }
 
   .blog-card {
     max-width: 100%;
-    padding: 16px 20px;
+    padding: 13px 20px;
   }
 
   .blog-preview {

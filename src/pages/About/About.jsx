@@ -1,12 +1,15 @@
 import "./About.css";
 import { SKILLS } from "../../skills.js";
+import TypingAnimation from "../../components/TypingAnimation/TypingAnimation";
 
 export default function About() {
   return (
-    <section id="about" className="hero-section">
+    <section id="about" className="hero-section fade-slide-in">
       <div className="hero-left">
         <div className="hero-card">
-          <div className="hero-tag">Computer Science · DCU</div>
+          <div className="hero-tag">
+            <TypingAnimation />
+          </div>
           <h1>Eoghan Sullivan</h1>
           <p className="hero-bio">
             Computer Science student with a passion for software development and engineering. Possessing a technical skillset gained through academic projects and practical application. A proactive learner and effective team player, eager to apply strong problem‑solving abilities and a collaborative mindset to contribute to innovative technology projects.

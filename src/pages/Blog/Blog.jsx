@@ -98,7 +98,7 @@ export default function Blog() {
   }, [currentPost]);
 
   return (
-    <section id="blog" className="page-section">
+    <section id="blog" className="page-section fade-slide-in">
       <div className="page-inner">
         <div className="blog-outer-box">
           <h1>Blogs</h1>

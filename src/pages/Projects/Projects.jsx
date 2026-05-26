@@ -274,7 +274,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="page-section">
+    <section id="projects" className="page-section fade-slide-in">
       <div aria-live="polite" aria-atomic="true" ref={announceRef} className="sr-only" />
       <div className="page-inner">
         <div className="section-header">

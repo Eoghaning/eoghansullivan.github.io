@@ -80,28 +80,7 @@
   background: var(--accent2);
 }
 
-.theme-toggle {
-  background: var(--bg2);
-  border: 1px solid #888;
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 6px 0;
-  margin-left: auto;
-  font-size: 18px;
-  line-height: 1;
-  width: 88px;
-  text-align: center;
-  transition: all 0.15s;
-  flex-shrink: 0;
-}
-.theme-toggle:hover {
-  background: var(--accent2);
-  transform: translateY(-1px);
-}
 
-body.light-mode .theme-toggle {
-  border-color: var(--accent);
-}
 
 .hamburger {
   display: none;

@@ -2,7 +2,7 @@ import "./CV.css";
 
 export default function CV() {
   return (
-    <section id="cv" className="page-section">
+    <section id="cv" className="page-section fade-slide-in">
       <div className="page-inner">
         <div className="section-header cv-header">
           <h1>CV</h1>
