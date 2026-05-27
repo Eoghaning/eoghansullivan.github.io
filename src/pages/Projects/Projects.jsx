@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import "./Projects.css";
 import ReactMarkdown from "react-markdown";
 import { parse as parseYaml } from "yaml";
@@ -64,15 +64,13 @@ const resolveTag = (input, allTags) => {
 };
 
 export default function Projects() {
-  const [showMore, setShowMore] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [moreOpen, setMoreOpen] = useState(false);
   const [skillTags, setSkillTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [notFound, setNotFound] = useState(false);
   const inputRef = useRef(null);
-  const moreHeadingRef = useRef(null);
-  const modalRef = useRef(null);
   const announceRef = useRef(null);
 
   const allTags = useMemo(() => {
@@ -82,14 +80,6 @@ export default function Projects() {
     );
     return [...tagSet];
   }, []);
-
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-    }
-  }, [selectedProject]);
 
   useEffect(() => {
     const val = inputValue.trim().toLowerCase();
@@ -119,32 +109,6 @@ export default function Projects() {
       announceRef.current.textContent = `Filtering by ${skillTags.length} skill${skillTags.length > 1 ? 's' : ''}`;
     }
   }, [skillTags]);
-
-  useEffect(() => {
-    if (!selectedProject || !modalRef.current) return;
-    const modal = modalRef.current;
-    const focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (focusable.length === 0) return;
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-    const handleKeyDown = (e) => {
-      if (e.key !== 'Tab') return;
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-    modal.addEventListener('keydown', handleKeyDown);
-    first.focus();
-    return () => modal.removeEventListener('keydown', handleKeyDown);
-  }, [selectedProject]);
 
   const addTag = (rawInput) => {
     const trimmed = rawInput.trim();
@@ -200,30 +164,22 @@ export default function Projects() {
   const filteredMore = useMemo(() => filterProjects(MORE_PROJECTS), [skillTags]);
 
   const totalFiltered = filteredMain.length + filteredMore.length;
-  const isSearchActive = skillTags.length > 0;
-
-  const handleToggle = () => {
-    const nextShowMore = !showMore;
-    setShowMore(nextShowMore);
-    if (nextShowMore) {
-      setTimeout(() => {
-        if (moreHeadingRef.current) {
-          const yOffset = -80;
-          const y = moreHeadingRef.current.getBoundingClientRect().top + window.scrollY + yOffset;
-          window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-      }, 100);
-    }
+  const openProject = (project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = 'hidden';
   };
 
-  const openModal = (project) => setSelectedProject(project);
-  const closeModal = () => setSelectedProject(null);
-
-  const handleBackdropClick = (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-      closeModal();
-    }
+  const closePane = () => {
+    setSelectedProject(null);
+    document.body.style.overflow = '';
   };
+
+  useEffect(() => {
+    if (!selectedProject) return;
+    const handler = (e) => { if (e.key === 'Escape') closePane(); };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [selectedProject]);
 
   const relatedProjects = useMemo(() => {
     if (!selectedProject) return [];
@@ -239,7 +195,7 @@ export default function Projects() {
       .slice(0, 3);
   }, [selectedProject]);
 
-  const renderProjectCard = (project, index, baseNumber) => {
+  const renderProjectCard = (project, index) => {
     const allTags = project.tags || [];
     const MAX_VISIBLE_TAGS = 5;
     const visibleTags = allTags.slice(0, MAX_VISIBLE_TAGS);
@@ -249,13 +205,12 @@ export default function Projects() {
       <div
         key={project.title}
         className="project-card clickable-card"
-        onClick={() => openModal(project)}
-        style={{ animationDelay: `${index * 0.1}s` }}
+        onClick={() => openProject(project)}
         tabIndex={0}
-        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(project); } }}
+        onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(project); } }}
       >
         <div className="project-top">
-          <span className="project-num">0{baseNumber + index + 1}</span>
+          <span className="project-num">0{index + 1}</span>
           <span className="project-detail">{project.detail}</span>
         </div>
         <h3 className="project-title">{project.title}</h3>
@@ -274,143 +229,135 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="page-section fade-slide-in">
-      <div aria-live="polite" aria-atomic="true" ref={announceRef} className="sr-only" />
-      <div className="page-inner">
-        <div className="section-header">
-          <h1>
-            My Projects – <span className="heading-small">Click to view</span>
-          </h1>
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-            <div className="project-count-badge">
-              Total: {ALL_PROJECTS.length} projects
-            </div>
-            <div className="project-count-badge project-count-badge--filtered">
-              Filtered: {totalFiltered} projects
-            </div>
-          </div>
-        </div>
-
-        <div className="search-container">
-          <div className="skill-input-wrapper" onClick={() => inputRef.current?.focus()}>
-            {skillTags.map((tag, i) => (
-              <span key={i} className="skill-chip">
-                {tag}
-                <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }} tabIndex={0}>×</button>
-              </span>
-            ))}
-            <div style={{ position: 'relative', flex: 1, minWidth: '80px' }}>
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder=""
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="skill-search-inner"
-              />
-              {skillTags.length === 0 && inputValue === "" && (
-                <span className="skill-placeholder">
-                  Filter by skills...{" "}
-                  <span className="skill-placeholder-example">(e.g. React, Python, Docker)</span>
-                </span>
-              )}
-            </div>
-          </div>
-          {suggestions.length > 0 && (
-            <ul className="skill-suggestions" role="listbox">
-              {suggestions.map((s, i) => (
-                <li key={i} className="skill-suggestion-item" role="option" tabIndex={0} onMouseDown={() => addTag(s)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(s); } }}>
-                  {s}
-                </li>
-              ))}
-            </ul>
-          )}
-          {notFound && (
-            <div className="skill-not-found">Skill not found</div>
-          )}
-          {!notFound && (
-            <div className="search-hint">(space or enter to add — backspace to remove last)</div>
-          )}
-        </div>
-
-        <h2 className="projects-heading" style={{ textAlign: 'center' }}>Main Projects</h2>
-
-        <div className="projects-grid">
-          {filteredMain.map((p, i) => renderProjectCard(p, i, 0))}
-        </div>
-
-        {filteredMore.length > 0 && (
-          <div className="more-section">
-            <h2 ref={moreHeadingRef} className="projects-heading">More Projects</h2>
-            <div className="toggle-container">
-              <button className="btn-primary toggle-more-btn" onClick={handleToggle}>
-                {showMore ? "▲ Hide" : "▼ Show"}
-              </button>
-            </div>
-            {(isSearchActive || showMore) && (
-              <div className="projects-grid">
-                {filteredMore.map((p, i) => renderProjectCard(p, i, filteredMain.length))}
+    <>
+      <section id="projects" className="page-section fade-slide-in">
+        <div aria-live="polite" aria-atomic="true" ref={announceRef} className="sr-only" />
+        <div className="page-inner">
+          <div className="section-header">
+            <h1>
+              My Projects – <span className="heading-small">Click to view</span>
+            </h1>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <div className="project-count-badge">
+                Total: {ALL_PROJECTS.length} projects
               </div>
+              <div className="project-count-badge project-count-badge--filtered">
+                Filtered: {totalFiltered} projects
+              </div>
+            </div>
+          </div>
+
+          <div className="search-container">
+            <div className="skill-input-wrapper" onClick={() => inputRef.current?.focus()}>
+              {skillTags.map((tag, i) => (
+                <span key={i} className="skill-chip">
+                  {tag}
+                  <button className="skill-chip-remove" onClick={(e) => { e.stopPropagation(); removeTag(i); }} tabIndex={0}>×</button>
+                </span>
+              ))}
+              <div style={{ position: 'relative', flex: 1, minWidth: '80px' }}>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder=""
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  className="skill-search-inner"
+                />
+                {skillTags.length === 0 && inputValue === "" && (
+                  <span className="skill-placeholder">
+                    Filter by skills...{" "}
+                    <span className="skill-placeholder-example">(e.g. React, Python, Docker)</span>
+                  </span>
+                )}
+              </div>
+            </div>
+            {suggestions.length > 0 && (
+              <ul className="skill-suggestions" role="listbox">
+                {suggestions.map((s, i) => (
+                  <li key={i} className="skill-suggestion-item" role="option" tabIndex={0} onMouseDown={() => addTag(s)} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(s); } }}>
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {notFound && (
+              <div className="skill-not-found">Skill not found</div>
+            )}
+            {!notFound && (
+              <div className="search-hint">(space or enter to add — backspace to remove last)</div>
             )}
           </div>
-        )}
-      </div>
 
-      {selectedProject && (
-        <div className="modal-overlay" onClick={handleBackdropClick} ref={modalRef} tabIndex={-1}>
-          <div className="modal-content">
-            <button className="modal-close" onClick={closeModal} aria-label="Close modal">×</button>
-            <div className="modal-inner">
-              <h2 className="modal-title">{selectedProject.title}</h2>
-              <h3 className="modal-subtitle">{selectedProject.subtitle}</h3>
-              <hr className="modal-divider" />
+          <h2 className="projects-heading" style={{ textAlign: 'center' }}>Main Projects</h2>
 
-              <ReactMarkdown
-                components={{
-                  img: ({ src, alt }) => (
-                    <img src={imageLookup[src] || src} alt={alt || ''} loading="lazy" />
-                  ),
-                }}
-              >
-                {selectedProject.content}
-              </ReactMarkdown>
+          <div className="projects-grid">
+            {filteredMain.map((p, i) => renderProjectCard(p, i))}
+          </div>
 
-              <hr className="modal-divider" />
-
-              <div className="modal-tags">
-                {(selectedProject.tags || []).map(tag => (
-                  <span key={tag} className="modal-tag">{tag}</span>
-                ))}
-              </div>
-
-              <hr className="modal-divider" />
-
-              <div className="modal-links">
-                {Object.entries(selectedProject.links || {}).map(([label, url]) => (
-                  <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="modal-link">
-                    {label}
-                  </a>
-                ))}
-              </div>
-
-              {relatedProjects.length > 0 && (
-                <>
-                  <hr className="modal-divider" />
-                  <div className="modal-related">
-                    <span className="modal-related-title">More Like This</span>
-                    {relatedProjects.map(rp => (
-                      <button key={rp.title} className="modal-related-item" onClick={() => openModal(rp)}>
-                        {rp.title} <span className="modal-related-sub">{rp.subtitle}</span>
-                      </button>
-                    ))}
-                  </div>
-                </>
+          {filteredMore.length > 0 && (
+            <div className="more-section">
+              <button className="more-toggle" onClick={() => setMoreOpen(o => !o)} aria-expanded={moreOpen}>
+                <span className="more-toggle-icon">{moreOpen ? '▾' : '▸'}</span>
+                More Projects
+              </button>
+              {moreOpen && (
+                <div className="projects-grid">
+                  {filteredMore.map((p, i) => renderProjectCard(p, i))}
+                </div>
               )}
             </div>
+          )}
+        </div>
+      </section>
+
+      {selectedProject && (
+        <div className="mini-overlay" onClick={closePane}>
+          <div className="mini-card" onClick={(e) => e.stopPropagation()}>
+            <button className="mini-close-btn" onClick={closePane} aria-label="Close detail">&times;</button>
+            <h2 className="mini-title">{selectedProject.title}</h2>
+            <h3 className="mini-subtitle">{selectedProject.subtitle}</h3>
+            <hr className="mini-divider" />
+            <ReactMarkdown
+              components={{
+                img: ({ src, alt }) => (
+                  <img src={imageLookup[src] || src} alt={alt || ''} loading="lazy" />
+                ),
+              }}
+            >
+              {selectedProject.content}
+            </ReactMarkdown>
+            <hr className="mini-divider" />
+            <div className="mini-tags">
+              {(selectedProject.tags || []).map(tag => (
+                <span key={tag} className="mini-tag">{tag}</span>
+              ))}
+            </div>
+            <hr className="mini-divider" />
+            <div className="mini-links">
+              {Object.entries(selectedProject.links || {}).map(([label, url]) => (
+                <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="mini-link">
+                  {label}
+                </a>
+              ))}
+            </div>
+            {relatedProjects.length > 0 && (
+              <>
+                <hr className="mini-divider" />
+                <div className="mini-related">
+                  <span className="mini-related-title">More Like This</span>
+                  {relatedProjects.map(rp => (
+                    <button key={rp.title} className="mini-related-item" onClick={() => openProject(rp)}>
+                      {rp.title} <span className="mini-related-sub">{rp.subtitle}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }
