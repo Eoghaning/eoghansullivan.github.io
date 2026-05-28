@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import About from "./pages/About/About";
+import Skills from "./pages/Skills/Skills";
 import Projects from "./pages/Projects/Projects";
 import CV from "./pages/CV/CV";
 import Blog from "./pages/Blog/Blog";
@@ -12,7 +13,7 @@ export default function App() {
   const [navbarScrolled, setNavbarScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "projects", "cv", "blog"];
+      const sections = ["about", "skills", "projects", "cv", "blog"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (!el) continue;
@@ -51,6 +52,7 @@ export default function App() {
       <a href="#about" className="skip-link">Skip to content</a>
       <Navbar activeSection={activeSection} scrolled={navbarScrolled} />
       <About />
+      <Skills />
       <Projects />
       <CV />
       <Blog />

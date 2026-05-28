@@ -124,6 +124,10 @@
   font-size: 22px;
   display: block;
   margin-top: 0;
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
 }
 
 .download-heading {
@@ -137,6 +141,10 @@
   color: var(--text);
   display: inline;
   letter-spacing: 0.02em;
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
 }
 
 .btn-primary span {

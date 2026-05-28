@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import "./Blog.css";
 import ReactMarkdown from "react-markdown";
 import { parse as parseYaml } from "yaml";
@@ -43,6 +43,17 @@ export default function Blog() {
   const [expandedPost, setExpandedPost] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTags, setActiveTags] = useState([]);
+  const [dotCount, setDotCount] = useState(0);
+  useEffect(() => {
+    if (searchQuery !== "") {
+      setDotCount(0);
+      return;
+    }
+    const interval = setInterval(() => {
+      setDotCount(prev => (prev + 1) % 5);
+    }, 500);
+    return () => clearInterval(interval);
+  }, [searchQuery]);
 
   const sortedPosts = [...PUBLISHED_POSTS].sort((a, b) => {
     const dateA = new Date(a.date);
@@ -103,13 +114,20 @@ export default function Blog() {
         <div className="blog-outer-box">
           <h1>Blogs</h1>
           <div className="blog-toolbar">
-            <input
-              className="blog-search"
-              type="text"
-              placeholder="Search posts..."
-              value={searchQuery}
-              onChange={(e) => { setSearchQuery(e.target.value); setExpandedPost(null); }}
-            />
+            <div className="blog-search-wrapper">
+              <input
+                className="blog-search"
+                type="text"
+                placeholder=""
+                value={searchQuery}
+                onChange={(e) => { setSearchQuery(e.target.value); setExpandedPost(null); }}
+              />
+              {searchQuery === "" && (
+                <span className="blog-search-placeholder">
+                  Search Posts<span className="dot-anim"><span style={{ opacity: dotCount >= 1 ? 1 : 0 }}>.</span><span style={{ opacity: dotCount >= 2 ? 1 : 0 }}>.</span><span style={{ opacity: dotCount >= 3 ? 1 : 0 }}>.</span><span style={{ opacity: dotCount >= 4 ? 1 : 0 }}>.</span></span>
+                </span>
+              )}
+            </div>
             <button className="sort-toggle" onClick={toggleSort}>
               {sortOrder === "desc" ? "▼ Newest First" : "▲ Oldest First"}
             </button>

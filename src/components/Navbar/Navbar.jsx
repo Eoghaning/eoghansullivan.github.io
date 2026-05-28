@@ -3,9 +3,11 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import "./Navbar.css";
 
 const NAV_LINKS = [
-  { label: "View Projects", section: "Projects" },
-  { label: "Download CV", section: "CV" },
-  { label: "View Blogs", section: "Blog" }
+  { label: "About", section: "About" },
+  { label: "Skills", section: "Skills" },
+  { label: "Projects", section: "Projects" },
+  { label: "CV", section: "CV" },
+  { label: "Blog", section: "Blog" }
 ];
 
 const scrollTo = (id) => {

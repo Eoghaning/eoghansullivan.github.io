@@ -72,6 +72,17 @@ export default function Projects() {
   const [notFound, setNotFound] = useState(false);
   const inputRef = useRef(null);
   const announceRef = useRef(null);
+  const [dotCount, setDotCount] = useState(1);
+  useEffect(() => {
+    if (skillTags.length > 0 || inputValue !== "") {
+      setDotCount(1);
+      return;
+    }
+    const interval = setInterval(() => {
+      setDotCount(prev => (prev % 3) + 1);
+    }, 500);
+    return () => clearInterval(interval);
+  }, [skillTags.length, inputValue]);
 
   const allTags = useMemo(() => {
     const tagSet = new Set(ALL_SKILL_ITEMS);
@@ -234,17 +245,7 @@ export default function Projects() {
         <div aria-live="polite" aria-atomic="true" ref={announceRef} className="sr-only" />
         <div className="page-inner">
           <div className="section-header">
-            <h1>
-              My Projects – <span className="heading-small">Click to view</span>
-            </h1>
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-              <div className="project-count-badge">
-                Total: {ALL_PROJECTS.length} projects
-              </div>
-              <div className="project-count-badge project-count-badge--filtered">
-                Filtered: {totalFiltered} projects
-              </div>
-            </div>
+            <h1>My Projects</h1>
           </div>
 
           <div className="search-container">
@@ -267,7 +268,7 @@ export default function Projects() {
                 />
                 {skillTags.length === 0 && inputValue === "" && (
                   <span className="skill-placeholder">
-                    Filter by skills...{" "}
+                    Filter by skills<span className="dot-anim"><span style={{ opacity: dotCount >= 1 ? 1 : 0 }}>.</span><span style={{ opacity: dotCount >= 2 ? 1 : 0 }}>.</span><span style={{ opacity: dotCount >= 3 ? 1 : 0 }}>.</span></span>{" "}
                     <span className="skill-placeholder-example">(e.g. React, Python, Docker)</span>
                   </span>
                 )}
@@ -290,6 +291,11 @@ export default function Projects() {
             )}
           </div>
 
+          <div className="project-count-pill">
+            {skillTags.length > 0
+              ? `${totalFiltered} filtered`
+              : `${totalFiltered} projects`}
+          </div>
           <h2 className="projects-heading" style={{ textAlign: 'center' }}>Main Projects</h2>
 
           <div className="projects-grid">
@@ -299,7 +305,7 @@ export default function Projects() {
           {filteredMore.length > 0 && (
             <div className="more-section">
               <button className="more-toggle" onClick={() => setMoreOpen(o => !o)} aria-expanded={moreOpen}>
-                <span className="more-toggle-icon">{moreOpen ? '▾' : '▸'}</span>
+                <span className="more-toggle-icon" style={{ display: 'inline-block', transform: moreOpen ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform 0.2s' }}>↓</span>
                 More Projects
               </button>
               {moreOpen && (

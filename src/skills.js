@@ -1,7 +1,7 @@
 export const SKILLS = [
   { 
     category: "Languages", 
-    items: ["Python", "Java", "JavaScript", "TypeScript", "C", "C++", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
+    items: ["Python", "Java", "JavaScript", "TypeScript", "C", "C++", "Go", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
   },
   { 
     category: "Libraries", 
@@ -12,7 +12,7 @@ export const SKILLS = [
     items: [
       "React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab", "Netlify",
       "SQLite", "Redis", "Celery", "Django Channels", "Daphne",
-      "RESTful API Design", "WebSocket Protocol", "npm", 
+      "RESTful API Design", "WebSocket Protocol", "npm", "Postman API"
     ] 
   },
   { 
@@ -20,12 +20,12 @@ export const SKILLS = [
     items: [
       "Linux", "UNIX/GNU", "DevOps", "Windows", "Networking",
       "ML", "AI", "MLOps",
-      "Docker", "OpenCV", "PyTorch"
+      "Docker", "OpenCV", "PyTorch", "eSIM/pSIM"
     ] 
   },
   { 
     category: "Practices & Tools", 
-    items: ["Testing", "CI/CD", "Technical Documentation", "Agile"] 
+    items: ["Testing", "CI/CD", "Technical Documentation", "Agile", "Jira", "Debugging", "Pseudocode"] 
   },
   { 
     category: "Interpersonal", 

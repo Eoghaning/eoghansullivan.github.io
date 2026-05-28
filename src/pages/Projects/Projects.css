@@ -179,6 +179,10 @@ body.light-mode .project-count-badge--filtered {
   font-size: 2em;
   margin: 0.5em 0;
   text-align: center;
+  text-shadow: -2px -2px 0 #000,
+                2px -2px 0 #000,
+               -2px  2px 0 #000,
+                2px  2px 0 #000;
 }
 
 .more-section {
@@ -486,13 +490,12 @@ body.light-mode .project-count-badge--filtered {
   align-items: center;
   gap: 5px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--accent);
-  background: var(--bg3);
+  background: var(--accent2);
   border: 1px solid var(--accent);
-  padding: 3px 8px 3px 10px;
-  border-radius: 4px;
-  letter-spacing: 0.04em;
+  padding: 5px 12px;
+  border-radius: 0;
   white-space: nowrap;
 }
 
@@ -561,11 +564,10 @@ body.light-mode .project-count-badge--filtered {
 .skill-suggestion-item {
   padding: 6px 15px;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
   color: var(--accent);
   cursor: pointer;
   transition: background 0.15s;
-  letter-spacing: 0.03em;
 }
 
 .skill-suggestion-item:hover {
@@ -578,4 +580,19 @@ body.light-mode .project-count-badge--filtered {
   color: #ff4d4d;
   letter-spacing: 0.02em;
   margin-top: 4px;
+}
+
+.project-count-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--bg3);
+  border: 1px solid var(--accent);
+  padding: 3px 10px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  white-space: nowrap;
 }

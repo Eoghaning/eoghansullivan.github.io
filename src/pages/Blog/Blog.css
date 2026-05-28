@@ -215,9 +215,13 @@ body.light-mode .blog-card:nth-child(5) { background: #f2ede2; }
   flex-wrap: wrap;
 }
 
-.blog-search {
+.blog-search-wrapper {
+  position: relative;
   flex: 1;
   min-width: 180px;
+}
+.blog-search {
+  width: 100%;
   background: var(--bg2);
   border: 1px solid var(--accent);
   border-radius: 30px;
@@ -231,9 +235,17 @@ body.light-mode .blog-card:nth-child(5) { background: #f2ede2; }
 .blog-search:focus {
   box-shadow: 0 0 0 2px var(--accent2);
 }
-.blog-search::placeholder {
+.blog-search-placeholder {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--dim);
   opacity: 0.5;
+  font-family: var(--sans);
+  font-size: 16px;
+  pointer-events: none;
+  white-space: nowrap;
 }
 
 .blog-no-results {

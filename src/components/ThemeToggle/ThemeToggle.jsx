@@ -29,12 +29,13 @@ export default function ThemeToggle() {
         .theme-toggle {
           background: #2a2a3a;
           border: 1px solid #444;
-          border-radius: 18px;
+          border-radius: 27px;
           cursor: pointer;
           padding: 0;
           margin-left: auto;
-          width: 56px;
-          height: 28px;
+          margin-right: 10px;
+          width: 84px;
+          height: 32px;
           position: relative;
           flex-shrink: 0;
           transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
@@ -53,10 +54,10 @@ export default function ThemeToggle() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 6px;
+          padding: 0 9px;
         }
         .theme-toggle-icon {
-          font-size: 12px;
+          font-size: 18px;
           line-height: 1;
           display: flex;
           transition: opacity 0.3s;
@@ -78,10 +79,10 @@ export default function ThemeToggle() {
         }
         .theme-toggle-knob {
           position: absolute;
-          top: 3px;
-          left: 3px;
-          width: 20px;
-          height: 20px;
+          top: 2px;
+          left: 5px;
+          width: 28px;
+          height: 28px;
           border-radius: 50%;
           background: #f5c542;
           transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
@@ -91,15 +92,15 @@ export default function ThemeToggle() {
           box-shadow: 0 1px 4px rgba(0,0,0,0.4);
         }
         body.light-mode .theme-toggle-knob {
-          transform: translateX(28px);
+          transform: translateX(46px);
           background: #4a6fa5;
           box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
         .theme-toggle:hover .theme-toggle-knob {
-          box-shadow: 0 0 14px rgba(245,197,66,0.6);
+          box-shadow: 0 0 21px rgba(245,197,66,0.6);
         }
         body.light-mode .theme-toggle:hover .theme-toggle-knob {
-          box-shadow: 0 0 14px rgba(74,111,165,0.5);
+          box-shadow: 0 0 21px rgba(74,111,165,0.5);
         }
       `}</style>
     </>

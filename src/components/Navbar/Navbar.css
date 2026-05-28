@@ -46,8 +46,8 @@
 
 .nav-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(5, 150px);
+  gap: 50px;
   width: auto;
 }
 
@@ -58,7 +58,8 @@
   font-family: var(--sans);
   font-size: 18px;
   font-weight: 700;
-  padding: 11px 48px;
+  padding: 11px 6px;
+  width: 100%;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
@@ -67,7 +68,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 .nav-link:hover {

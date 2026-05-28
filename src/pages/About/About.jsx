@@ -1,5 +1,4 @@
 import "./About.css";
-import { SKILLS } from "../../skills.js";
 import TypingAnimation from "../../components/TypingAnimation/TypingAnimation";
 
 export default function About() {
@@ -7,6 +6,7 @@ export default function About() {
     <section id="about" className="hero-section fade-slide-in">
       <div className="hero-left">
         <div className="hero-card">
+          <div className="about-label">About</div>
           <div className="hero-tag">
             <TypingAnimation />
           </div>
@@ -23,18 +23,18 @@ export default function About() {
             <li>A blog where I share my progress and insights throughout my studies and career</li>
           </ul>
         </div>
-        <div className="hero-actions">
-          <button className="btn-primary" onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}>
-            View Projects
-          </button>
-          <button className="btn-primary" onClick={() => document.getElementById("cv")?.scrollIntoView({ behavior: "smooth" })}>
-            Download CV
-          </button>
-          <button className="btn-primary" onClick={() => document.getElementById("blog")?.scrollIntoView({ behavior: "smooth" })}>
-            View Blogs
-          </button>
-        </div>
+      </div>
 
+      <div className="hero-right">
+        <div className="image-stack">
+          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" loading="lazy" />
+          <div className="small-images">
+            <img src="/I1.png" alt="Decorative icon" className="small-image" loading="lazy" />
+            <img src="/I2.jpg" alt="Decorative icon" className="small-image" loading="lazy" />
+            <img src="/I3.png" alt="Decorative icon" className="small-image" loading="lazy" />
+          </div>
+          <img src="/I4.jpg" alt="Decorative image" className="tall-image" loading="lazy" />
+        </div>
         <div className="contact-section">
           <div className="contact-item">
             <span className="contact-text">💼 Work Email: eoghansullivan.work@gmail.com</span>
@@ -55,36 +55,17 @@ export default function About() {
             </a>
           </div>
           <div className="contact-item">
+            <span className="contact-text">🦊 GitLab: sullive4</span>
+            <a href="https://gitlab.computing.dcu.ie/sullive4" target="_blank" rel="noreferrer" className="btn-primary btn-small" aria-label="GitLab profile">
+              Visit
+            </a>
+          </div>
+          <div className="contact-item">
             <span className="contact-text">📧 Personal Email: eoghanksullivan100@gmail.com</span>
             <a href="mailto:eoghanksullivan100@gmail.com" className="btn-primary btn-small" aria-label="Email eoghanksullivan100@gmail.com">
               Email
             </a>
           </div>
-        </div>
-      </div>
-
-      <div className="hero-right">
-        <div className="image-stack">
-          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" loading="lazy" />
-          <div className="small-images">
-            <img src="/I1.png" alt="Decorative icon" className="small-image" loading="lazy" />
-            <img src="/I2.jpg" alt="Decorative icon" className="small-image" loading="lazy" />
-            <img src="/I3.png" alt="Decorative icon" className="small-image" loading="lazy" />
-          </div>
-          <img src="/I4.jpg" alt="Decorative image" className="tall-image" loading="lazy" />
-        </div>
-        <div className="skills-card">
-          <h3 className="skills-heading">Skills</h3>
-          {SKILLS.map((s) => (
-            <div key={s.category} className="skill-group">
-              <div className="skill-label">{s.category}</div>
-              <div className="skill-tags">
-                {s.items.map((item) => (
-                  <span key={item} className="skill-tag">{item}</span>
-                ))}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </section>
