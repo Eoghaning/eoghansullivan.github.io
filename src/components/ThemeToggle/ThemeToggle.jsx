@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 export default function ThemeToggle() {
   const [isLight, setIsLight] = useState(() => {
     const saved = localStorage.getItem('theme') === 'light';
+    document.documentElement.classList.toggle('light-mode', saved);
     document.body.classList.toggle('light-mode', saved);
     return saved;
   });
 
   useEffect(() => {
+    document.documentElement.classList.toggle('light-mode', isLight);
     document.body.classList.toggle('light-mode', isLight);
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   }, [isLight]);
@@ -28,7 +30,7 @@ export default function ThemeToggle() {
       <style>{`
         .theme-toggle {
           background: #2a2a3a;
-          border: 1px solid #444;
+          border: 2px solid #444;
           border-radius: 27px;
           cursor: pointer;
           padding: 0;
@@ -45,8 +47,8 @@ export default function ThemeToggle() {
           transform: scale(0.92);
         }
         body.light-mode .theme-toggle {
-          background: #d4c9b3;
-          border-color: #000;
+          background: #e6ede6;
+          border-color: #059669;
         }
         .theme-toggle-track {
           position: absolute;
@@ -79,7 +81,7 @@ export default function ThemeToggle() {
         }
         .theme-toggle-knob {
           position: absolute;
-          top: 2px;
+          top: 0;
           left: 5px;
           width: 28px;
           height: 28px;
@@ -93,14 +95,14 @@ export default function ThemeToggle() {
         }
         body.light-mode .theme-toggle-knob {
           transform: translateX(46px);
-          background: #4a6fa5;
+          background: #059669;
           box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
         .theme-toggle:hover .theme-toggle-knob {
           box-shadow: 0 0 21px rgba(245,197,66,0.6);
         }
         body.light-mode .theme-toggle:hover .theme-toggle-knob {
-          box-shadow: 0 0 21px rgba(74,111,165,0.5);
+          box-shadow: 0 0 21px rgba(5,150,105,0.5);
         }
       `}</style>
     </>

@@ -13,7 +13,7 @@
 
 .cv-block {
   background: var(--bg2);
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 14px;
   padding: 32px;
   height: 100%;
@@ -124,10 +124,10 @@
   font-size: 22px;
   display: block;
   margin-top: 0;
-  text-shadow: -2px -2px 0 #000,
-                2px -2px 0 #000,
-               -2px  2px 0 #000,
-                2px  2px 0 #000;
+  text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+               -1px  1px 0 #000,
+                1px  1px 0 #000;
 }
 
 .download-heading {
@@ -141,10 +141,10 @@
   color: var(--text);
   display: inline;
   letter-spacing: 0.02em;
-  text-shadow: -2px -2px 0 #000,
-                2px -2px 0 #000,
-               -2px  2px 0 #000,
-                2px  2px 0 #000;
+  text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+               -1px  1px 0 #000,
+                1px  1px 0 #000;
 }
 
 .btn-primary span {

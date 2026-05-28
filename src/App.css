@@ -52,7 +52,7 @@ body {
 
 .btn-outline {
   background: transparent; color: var(--text);
-  border: 1px solid var(--border2); padding: 14px 28px;
+  border: 2px solid var(--border2); padding: 14px 28px;
   border-radius: var(--r); font-family: var(--sans); font-size: 14px;
   cursor: pointer; transition: all 0.15s; letter-spacing: 0.02em;
 }
@@ -110,22 +110,31 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #ffffff transparent;
 }
+html.light-mode::-webkit-scrollbar-thumb {
+  background: #059669;
+}
+html.light-mode::-webkit-scrollbar-thumb:hover {
+  background: #34d399;
+}
+html.light-mode {
+  scrollbar-color: #059669 transparent;
+}
 
 @media (max-width: 768px) {
   .page-section { padding: 80px 20px var(--section-gap); }
 }
 
 body.light-mode {
-  --bg:      #d4c9b3;
-  --bg2:     #f5f0e6;
-  --bg3:     #ede7db;
-  --border:  rgba(0,0,0,0.12);
-  --border2: rgba(0,0,0,0.2);
-  --text:    #1a1a1a;
-  --muted:   #333333;
-  --dim:     #555555;
-  --accent:  #000000;
-  --accent2: rgba(0,0,0,0.08);
+  --bg:      #f5efe6;
+  --bg2:     #fcf9f5;
+  --bg3:     #f5f0e8;
+  --border:  rgba(0,0,0,0.10);
+  --border2: rgba(0,0,0,0.18);
+  --text:    #14241a;
+  --muted:   #3a5240;
+  --dim:     #5a7058;
+  --accent:  #059669;
+  --accent2: rgba(5,150,105,0.10);
 }
 
 body.light-mode {
@@ -136,13 +145,18 @@ body.light-mode .btn-primary {
   color: #ffffff;
 }
 
+body.light-mode .btn-outline:hover {
+  border-color: var(--accent);
+  background: var(--accent2);
+}
+
 body.light-mode .back-to-top {
   color: #ffffff;
 }
 
 body.light-mode .nav {
-  background: rgba(255,255,255,0.92);
-  border: 1px solid var(--accent);
+  background: rgba(220,232,220,0.92);
+  border: 2px solid var(--accent);
 }
 
 body.light-mode .nav--scrolled {

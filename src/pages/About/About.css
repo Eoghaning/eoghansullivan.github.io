@@ -22,7 +22,7 @@
 }
 .hero-card {
   background: var(--bg2);
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 16px;
   padding: 28px;
   margin-bottom: 28px;
@@ -49,7 +49,8 @@
 
 .about-label {
   font-family: var(--mono);
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: 700;
   color: var(--text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -103,14 +104,17 @@
   align-items: center;
   justify-content: space-between;
   background: var(--bg2);
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 9px 16px;
   width: 100%;
   transition: box-shadow 0.2s;
 }
 .contact-item:hover {
   box-shadow: 0 4px 12px rgba(212,240,74,0.1);
+}
+body.light-mode .contact-item:hover {
+  box-shadow: 0 4px 12px var(--accent2);
 }
 .contact-text {
   font-family: var(--mono);
@@ -124,7 +128,7 @@
   flex: 1;
 }
 .btn-small {
-  padding: 6px 14px !important;
+  padding: 5px 14px !important;
   font-size: 12px !important;
   border-radius: 18px !important;
   margin-left: 10px;
@@ -144,7 +148,7 @@
   height: 372px;
   object-fit: cover;
   border-radius: 16px 0 0 16px;
-  border: 3px solid var(--accent);
+  border: 2px solid var(--accent);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 .small-images {
@@ -165,7 +169,7 @@
   width: 15%;
   height: 372px;
   object-fit: cover;
-  border: 3px solid var(--accent);
+  border: 2px solid var(--accent);
   border-radius: 0 16px 16px 0;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
