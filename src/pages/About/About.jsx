@@ -26,16 +26,18 @@ export default function About() {
       </div>
 
       <div className="hero-right">
-        <div className="image-stack">
-          <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" loading="lazy" />
-          <div className="small-images">
-            <img src="/I1.png" alt="Decorative icon" className="small-image" loading="lazy" />
-            <img src="/I2.jpg" alt="Decorative icon" className="small-image" loading="lazy" />
-            <img src="/I3.png" alt="Decorative icon" className="small-image" loading="lazy" />
+          <div className="image-stack">
+            <div className="image-row">
+              <img src="/face.jpg" alt="Eoghan Sullivan" className="face-image" loading="lazy" />
+              <div className="small-images">
+                <img src="/I1.png" alt="Decorative icon" className="small-image" loading="lazy" />
+                <img src="/I2.jpg" alt="Decorative icon" className="small-image" loading="lazy" />
+                <img src="/I3.png" alt="Decorative icon" className="small-image" loading="lazy" />
+              </div>
+            </div>
+            <p className="motto">Building Solutions to Real World Problems!</p>
           </div>
-          <img src="/I4.jpg" alt="Decorative image" className="tall-image" loading="lazy" />
-        </div>
-        <div className="contact-section">
+          <div className="contact-section">
           <div className="contact-item">
             <span className="contact-text">💼 Work Email: eoghansullivan.work@gmail.com</span>
             <a href="mailto:eoghansullivan.work@gmail.com" className="btn-primary btn-small" aria-label="Email eoghansullivan.work@gmail.com">
@@ -51,12 +53,6 @@ export default function About() {
           <div className="contact-item">
             <span className="contact-text">🐙 GitHub: github.com/Eoghaning</span>
             <a href="https://github.com/Eoghaning" target="_blank" rel="noreferrer" className="btn-primary btn-small" aria-label="GitHub profile">
-              Visit
-            </a>
-          </div>
-          <div className="contact-item">
-            <span className="contact-text">🦊 GitLab: sullive4</span>
-            <a href="https://gitlab.computing.dcu.ie/sullive4" target="_blank" rel="noreferrer" className="btn-primary btn-small" aria-label="GitLab profile">
               Visit
             </a>
           </div>

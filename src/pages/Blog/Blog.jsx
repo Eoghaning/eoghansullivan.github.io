@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Blog.css";
 import ReactMarkdown from "react-markdown";
 import { parse as parseYaml } from "yaml";
@@ -94,20 +94,6 @@ export default function Blog() {
 
   const currentPost = expandedPost !== null ? visiblePosts[expandedPost] : null;
 
-  const relatedPosts = useMemo(() => {
-    if (!currentPost) return [];
-    const currentTags = currentPost.tags || [];
-    return PUBLISHED_POSTS
-      .filter(p => p.title !== currentPost.title)
-      .map(p => ({
-        ...p,
-        _matchCount: (p.tags || []).filter(t => currentTags.includes(t)).length,
-      }))
-      .filter(p => p._matchCount > 0)
-      .sort((a, b) => b._matchCount - a._matchCount)
-      .slice(0, 3);
-  }, [currentPost]);
-
   return (
     <section id="blog" className="page-section fade-slide-in">
       <div className="page-inner">
@@ -188,17 +174,7 @@ export default function Blog() {
                     >
                       {post.content}
                     </ReactMarkdown>
-                    {relatedPosts.length > 0 && (
-                      <div className="blog-related">
-                        <span className="blog-related-title">Related Posts</span>
-                        {relatedPosts.map(rp => (
-                          <div key={rp.title} className="blog-related-item">
-                            <span className="blog-related-date">[{formatDate(rp.date)}]</span>{" "}
-                            {rp.title}
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <br />
                   </div>
                 )}
               </article>

@@ -96,8 +96,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 107.5%;
-  margin-left: -7.5%;
+  width: 100%;
 }
 .contact-item {
   display: flex;
@@ -137,41 +136,64 @@ body.light-mode .contact-item:hover {
 }
 .image-stack {
   display: flex;
-  flex-direction: row;
-  gap: 0;
-  width: 107.5%;
-  margin-left: -7.5%;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg2);
+  border: 2px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px 12px 20px;
   margin-bottom: 30px;
+}
+.image-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
 }
 .face-image {
   width: 65%;
-  height: 372px;
+  height: 333px;
   object-fit: cover;
-  border-radius: 16px 0 0 16px;
+  border-radius: 16px;
   border: 2px solid var(--accent);
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 .small-images {
-  width: 20%;
+  width: 35%;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 4px;
 }
 .small-image {
   width: 100%;
-  height: 124px;
+  flex-shrink: 0;
+  height: 108px;
   object-fit: cover;
   border: 2px solid var(--accent);
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  border-radius: 0;
+  border-radius: 16px;
 }
-.tall-image {
-  width: 15%;
-  height: 372px;
-  object-fit: cover;
-  border: 2px solid var(--accent);
-  border-radius: 0 16px 16px 0;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+.motto {
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  margin: 24px 0;
+  letter-spacing: 0.05em;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, var(--accent) 30%, #fff 50%, var(--accent) 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: btnShine 6s ease-in-out infinite;
+  align-self: center;
+}
+
+@keyframes btnShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 @media (max-width: 768px) {
@@ -196,33 +218,33 @@ body.light-mode .contact-item:hover {
   .image-stack {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
     width: 100%;
     margin-left: 0;
     margin-bottom: 30px;
   }
+  .image-row,
   .face-image,
-  .small-images,
-  .tall-image {
+  .small-images {
     width: 100%;
     max-width: 320px;
     height: auto;
+  }
+  .image-row {
+    flex-direction: column;
+    gap: 4px;
   }
   .face-image {
     border-radius: 16px;
   }
   .small-images {
     flex-direction: row;
-    gap: 16px;
+    gap: 4px;
   }
   .small-image {
-    width: calc((100% - 32px) / 3);
+    width: calc((100% - 8px) / 3);
     height: auto;
     aspect-ratio: 1/1;
     border-radius: 8px;
-  }
-  .tall-image {
-    border-radius: 16px;
   }
   .contact-item {
     max-width: 100%;
@@ -239,7 +261,7 @@ body.light-mode .contact-item:hover {
 }
 @media (max-width: 480px) {
   .small-image {
-    width: calc((100% - 20px) / 3);
+    width: calc((100% - 8px) / 3);
   }
   .contact-item {
     flex-wrap: wrap;

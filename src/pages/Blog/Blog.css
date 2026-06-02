@@ -175,32 +175,6 @@ body.light-mode .blog-tag-label {
   font-size: 13px;
 }
 
-.blog-related {
-  border-top: 1px solid var(--border2);
-  margin-top: 24px;
-  padding-top: 16px;
-}
-.blog-related-title {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  display: block;
-  margin-bottom: 10px;
-}
-.blog-related-item {
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--muted);
-  padding: 4px 0;
-  cursor: default;
-}
-.blog-related-date {
-  font-size: 0.85em;
-  opacity: 0.7;
-}
-
 .blog-preview p {
   margin: 0 0 1em 0;
 }

@@ -240,8 +240,9 @@ body.light-mode .project-card:hover {
   border-radius: 50%;
   background: var(--accent);
   color: #080809;
-  border: none;
+  border: 3px solid #080809;
   font-size: 24px;
+  font-weight: 700;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
