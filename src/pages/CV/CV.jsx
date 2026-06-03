@@ -37,7 +37,7 @@ export default function CV() {
           <div className="cv-divider">________________________________________________________________________</div>
           <div className="cv-item cv-exp-row">
             <div className="cv-exp-header">
-              <div className="cv-item-year">May 2026 – May 2027</div>
+              <div className="cv-item-year">May 2026 – Nov 2026 (expected)</div>
               <div className="cv-item-title">Mobile Network Testing Intern</div>
               <div className="cv-item-sub">1GLOBAL</div>
             </div>
