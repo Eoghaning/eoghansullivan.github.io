@@ -215,11 +215,14 @@ export default function Projects() {
     return (
       <div
         key={project.title}
-        className="project-card clickable-card"
+        className={`project-card clickable-card${project.status === 'coming-soon' ? ' project-card-coming' : ''}`}
         onClick={() => openProject(project)}
         tabIndex={0}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(project); } }}
       >
+        {project.status === 'coming-soon' && (
+          <div className="project-coming-badge">Coming Soon</div>
+        )}
         <div className="project-top">
           <span className="project-num">0{index + 1}</span>
           <span className="project-detail">{project.detail}</span>

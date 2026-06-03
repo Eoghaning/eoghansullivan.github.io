@@ -51,6 +51,42 @@ body.light-mode .project-card:hover {
               0 0 0 2px var(--accent2);
 }
 
+.project-card-coming {
+  position: relative;
+  opacity: 0.75;
+}
+
+.project-card-coming::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(212, 240, 74, 0.04) 10px,
+    rgba(212, 240, 74, 0.04) 20px
+  );
+  pointer-events: none;
+}
+
+.project-coming-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #080809;
+  background: var(--accent);
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  z-index: 1;
+  border-radius: 4px;
+}
+
 .project-top {
   display: flex;
   justify-content: space-between;

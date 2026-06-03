@@ -18,7 +18,7 @@ export const SKILLS = [
   { 
     category: "Systems & AI", 
     items: [
-      "Linux", "UNIX/GNU", "DevOps", "Windows", "Networking",
+      "Linux", "UNIX/GNU", "DevOps", "Windows", "Mac", "Networking",
       "ML", "AI", "MLOps",
       "Docker", "OpenCV", "PyTorch", "eSIM/pSIM"
     ] 

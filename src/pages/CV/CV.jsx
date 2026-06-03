@@ -9,60 +9,49 @@ export default function CV() {
         </div>
 
         <div className="download-heading">
-          <span className="download-heading-text">Download Full CV</span>
+          <span className="download-heading-text">View/Download CV</span>
         </div>
 
         <div className="cv-button-wrapper">
+          <a href="/EoghanSullivan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <span>Open in Browser ↗</span>
+          </a>
           <a href="/EoghanSullivan_CV.pdf" download className="btn-primary">
-            <span>Eoghan Sullivan CV PDF ↓</span>
+            <span>Download CV PDF ↓</span>
           </a>
         </div>
 
-        <div className="section-header cv-header cv-subtitle-header">
-          <p className="section-sub cv-subtitle-badge">Education & Experience</p>
-        </div>
-
-        <div className="cv-grid">
-          <div className="cv-block">
-            <h3 className="cv-block-title">Education</h3>
-            <div className="cv-item">
-              <div className="cv-item-year">2023 – 2027</div>
+        <div className="cv-block">
+          <h3 className="cv-block-title">Education & Experience</h3>
+          <div className="cv-item cv-edu-row">
+            <div className="cv-edu-text">
+              <div className="cv-item-year">September 2023 – May/June 2027 (expected)</div>
               <div className="cv-item-title">BSc Computer Science</div>
-              <div className="cv-item-sub">Dublin City University</div>
-              <div className="cv-detail-item">Grade: 2.1</div>
-              <br/><br/><br/><br/><br/><br/>
+              <div className="cv-item-sub">Dublin City University (DCU)</div>
+              <ul className="cv-bullets">
+                <li><strong style={{ fontSize: "16px" }}>3rd Year Average:</strong> 2:1 (Second Class Honours, Upper Division)</li>
+              </ul>
             </div>
-            <div className="cv-divider">_______________________________________</div>
-            <div className="cv-item">
-              <div className="cv-item-year">2017 – 2023</div>
-              <div className="cv-item-title">Leaving Certificate</div>
-              <div className="cv-item-sub">St. Benildus College</div>
-              <div className="cv-detail-item">445 CAO Points</div>
-            </div>
+            <img src="/I1.png" alt="DCU" className="cv-edu-img" />
           </div>
-
-          <div className="cv-block">
-            <h3 className="cv-block-title">Experience</h3>
-            <div className="cv-item">
-              <div className="cv-item-year">Nov 2024 – May 2025</div>
-              <div className="cv-item-title">Cinema Operative</div>
-              <div className="cv-item-sub">Movies@Dundrum</div>
-              <ul className="cv-bullets">
-                <li>Managed ticket sales, handled hot foods, resolved customer queries, and maintained screening rooms</li>
-                <li>Assisted customers to their allocated seats and supported VIP screenings</li>
-                <li>Developed teamwork and time-management skills in a fast-paced environment</li>
-              </ul>
+          <div className="cv-divider">________________________________________________________________________</div>
+          <div className="cv-item cv-exp-row">
+            <div className="cv-exp-header">
+              <div className="cv-item-year">May 2026 – May 2027</div>
+              <div className="cv-item-title">Mobile Network Testing Intern</div>
+              <div className="cv-item-sub">1GLOBAL</div>
             </div>
-            <div className="cv-divider">_______________________________________</div>
-            <div className="cv-item">
-              <div className="cv-item-year">Jan 2024 – Aug 2024</div>
-              <div className="cv-item-title">Sales Assistant</div>
-              <div className="cv-item-sub">Costcutters, Windy Arbour</div>
-              <ul className="cv-bullets">
-                <li>Processed till transactions, handled stock replenishment, and trained new staff</li>
-                <li>Responsible for cleaning, maintaining the store, and other miscellaneous tasks</li>
-                <li>Promoted to leadership within 2 months, managing opening and closing procedures</li>
-              </ul>
+            <img src="/1G22.jpg" alt="1GLOBAL" className="cv-exp-img" />
+            <ul className="cv-bullets">
+              <li>Ran extensive tests on SIMs & eSIMs – calls, SMS, data, call forwarding, tethering, Wi-Fi speed, voicemail, barring, roaming, etc.</li>
+              <li>Used Postman API for REST requests to create accounts, provision eSIMs, and debug provisioning issues.</li>
+              <li>Filed detailed bug reports and tracked defects in Jira; analysed OCS CDR logs to verify call/SMS/data records.</li>
+              <li>Handled number porting across countries – initiated ports, ran live test calls, and confirmed completion.</li>
+            </ul>
+            <div className="cv-tags">
+              {["JavaScript", "Postman API", "Windows", "Mac", "Jira", "Debugging", "Testing", "Problem Solving", "Agile", "Teamwork", "Communication", "Technical Documentation", "Adaptability", "Critical Thinking"].map(tag => (
+                <span key={tag} className="cv-tag">{tag}</span>
+              ))}
             </div>
           </div>
         </div>
