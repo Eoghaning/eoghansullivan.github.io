@@ -134,6 +134,12 @@ body.light-mode .contact-item:hover {
   white-space: nowrap;
   flex-shrink: 0;
 }
+
+.contact-item .btn-small:hover {
+  box-shadow: 0 0 18px var(--accent);
+  transform: scale(1.05) translateY(-1px);
+  opacity: 1 !important;
+}
 .image-stack {
   display: flex;
   flex-direction: column;

@@ -13,10 +13,10 @@ export default function CV() {
         </div>
 
         <div className="cv-button-wrapper">
-          <a href="/EoghanSullivan_CV.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <a href="/EoghanSullivan_CV.pdf?v=3" target="_blank" rel="noopener noreferrer" className="btn-primary">
             <span>Open in Browser ↗</span>
           </a>
-          <a href="/EoghanSullivan_CV.pdf" download className="btn-primary">
+          <a href="/EoghanSullivan_CV.pdf?v=3" download className="btn-primary">
             <span>Download CV PDF ↓</span>
           </a>
         </div>
