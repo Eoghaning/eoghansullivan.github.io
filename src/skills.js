@@ -19,7 +19,7 @@ export const SKILLS = [
     category: "Systems & AI", 
     items: [
       "Linux", "UNIX/GNU", "DevOps", "Windows", "Mac", "Networking",
-      "ML", "AI", "MLOps",
+      "ML", "AI", "MLOps", "Computer Vision", "Real-time Systems",
       "Docker", "OpenCV", "PyTorch", "eSIM/pSIM"
     ] 
   },

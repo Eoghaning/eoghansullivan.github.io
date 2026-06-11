@@ -3,6 +3,7 @@ import "./Projects.css";
 import ReactMarkdown from "react-markdown";
 import { parse as parseYaml } from "yaml";
 import { ALL_SKILL_ITEMS } from "../../skills.js";
+import EmotionDetector from "../EmotionDetector/EmotionDetector.jsx";
 
 function parseFrontMatter(raw) {
   const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
@@ -65,6 +66,7 @@ const resolveTag = (input, allTags) => {
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showDemo, setShowDemo] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [skillTags, setSkillTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -345,11 +347,17 @@ export default function Projects() {
             </div>
             <hr className="mini-divider" />
             <div className="mini-links">
-              {Object.entries(selectedProject.links || {}).map(([label, url]) => (
-                <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="mini-link">
-                  {label}
-                </a>
-              ))}
+              {Object.entries(selectedProject.links || {}).map(([label, url]) =>
+                url === "#emotion-detector-demo" ? (
+                  <button key={label} className="mini-link mini-link-demo" onClick={() => setShowDemo(true)}>
+                    {label}
+                  </button>
+                ) : (
+                  <a key={label} href={url} target="_blank" rel="noopener noreferrer" className="mini-link">
+                    {label}
+                  </a>
+                )
+              )}
             </div>
             {relatedProjects.length > 0 && (
               <>
@@ -367,6 +375,7 @@ export default function Projects() {
           </div>
         </div>
       )}
+      {showDemo && <EmotionDetector onClose={() => setShowDemo(false)} />}
     </>
   );
 }

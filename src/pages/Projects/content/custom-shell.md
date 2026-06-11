@@ -12,7 +12,7 @@ tags:
   - Technical Documentation
   - Problem Solving
 detail: Interactive + batch modes
-type: main
+type: more
 links:
   GitHub: https://github.com/Eoghaning/CustomShell
 ---

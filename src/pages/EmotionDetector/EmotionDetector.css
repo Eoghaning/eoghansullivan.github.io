@@ -1,0 +1,405 @@
+.emdet-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+  animation: emdetFadeIn 0.25s ease;
+}
+
+@keyframes emdetFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.emdet-card {
+  background: #0f0f11;
+  border: 2px solid #d4f04a;
+  border-radius: 16px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 95vh;
+  overflow-y: auto;
+  position: relative;
+  animation: emdetScaleIn 0.3s ease;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(212, 240, 74, 0.08);
+}
+
+@keyframes emdetScaleIn {
+  from { opacity: 0; transform: scale(0.92) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.emdet-close {
+  position: sticky;
+  top: 12px;
+  float: right;
+  width: 42px;
+  height: 42px;
+  background: #161618;
+  border: 2px solid rgba(255, 255, 255, 0.13);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-right: 12px;
+}
+.emdet-close:hover {
+  background: rgba(212, 240, 74, 0.1);
+  border-color: #d4f04a;
+  transform: scale(1.05);
+}
+
+.emdet-header {
+  padding: 32px 32px 0;
+  clear: both;
+}
+.emdet-title {
+  font-family: "Syne", sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #d4f04a;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+.emdet-subtitle {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+  letter-spacing: 0.06em;
+}
+
+.emdet-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px 32px;
+}
+
+.emdet-video-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.emdet-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #080809;
+  border: 2px solid rgba(255, 255, 255, 0.07);
+}
+
+.emdet-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+}
+
+.emdet-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(212, 240, 74, 0.2);
+  border-top-color: #d4f04a;
+  border-radius: 50%;
+  animation: emdetSpin 0.8s linear infinite;
+}
+
+@keyframes emdetSpin {
+  to { transform: rotate(360deg); }
+}
+
+.emdet-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+}
+.emdet-error-icon {
+  font-size: 40px;
+}
+.emdet-retry-btn {
+  background: #d4f04a;
+  color: #080809;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.emdet-retry-btn:hover {
+  opacity: 0.85;
+}
+
+.emdet-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.emdet-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.emdet-facial-overlay {
+  position: absolute;
+  inset: 12px;
+  pointer-events: none;
+}
+.emdet-facial-dot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(212, 240, 74, 0.4);
+  border-style: solid;
+}
+.emdet-facial-dot--tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+.emdet-facial-dot--tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+.emdet-facial-dot--bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+.emdet-facial-dot--br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+.emdet-current-emotion {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(8, 8, 9, 0.8);
+  border: 1px solid rgba(212, 240, 74, 0.3);
+  border-radius: 30px;
+  padding: 6px 16px;
+  backdrop-filter: blur(4px);
+  white-space: nowrap;
+}
+.emdet-current-emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+.emdet-current-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #d4f04a;
+}
+.emdet-current-pct {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.emdet-probs-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.emdet-probs-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.emdet-probs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emdet-prob-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 48px;
+  align-items: center;
+  gap: 10px;
+}
+
+.emdet-prob-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.emdet-prob-emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.emdet-prob-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.emdet-prob-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  min-width: 2px;
+}
+
+.emdet-prob-value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: right;
+}
+
+.emdet-stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.emdet-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+  padding: 12px;
+}
+.emdet-stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+}
+.emdet-stat-value {
+  font-family: "Syne", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #d4f04a;
+}
+
+.emdet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 32px 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.emdet-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  user-select: none;
+}
+.emdet-toggle input {
+  display: none;
+}
+.emdet-toggle-track {
+  width: 36px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  position: relative;
+  transition: background 0.2s;
+}
+.emdet-toggle input:checked + .emdet-toggle-track {
+  background: #d4f04a;
+}
+.emdet-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #080809;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.emdet-toggle input:checked + .emdet-toggle-track .emdet-toggle-thumb {
+  transform: translateX(16px);
+}
+
+.emdet-api-status {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.emdet-api-ok {
+  background: rgba(48, 209, 88, 0.1);
+  color: #30d158;
+  border: 1px solid rgba(48, 209, 88, 0.3);
+}
+.emdet-api-na {
+  background: rgba(255, 69, 58, 0.1);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.3);
+}
+
+@media (max-width: 700px) {
+  .emdet-body {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+  .emdet-card {
+    max-width: 100%;
+    border-radius: 12px;
+  }
+  .emdet-header {
+    padding: 24px 16px 0;
+  }
+  .emdet-title {
+    font-size: 28px;
+  }
+  .emdet-footer {
+    padding: 8px 16px 24px;
+  }
+  .emdet-prob-row {
+    grid-template-columns: 80px 1fr 42px;
+  }
+}
