@@ -1,7 +1,7 @@
 export const SKILLS = [
   { 
     category: "Languages", 
-    items: ["Python", "Java", "JavaScript", "TypeScript", "C", "C++", "Go", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash"] 
+    items: ["Python", "Java", "JavaScript", "TypeScript", "C", "Go", "R", "SQL", "Haskell", "Prolog", "Shell", "MATLAB", "Bash", "Rust"] 
   },
   { 
     category: "Libraries", 
@@ -12,20 +12,28 @@ export const SKILLS = [
     items: [
       "React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab", "Netlify",
       "SQLite", "Redis", "Celery", "Django Channels", "Daphne",
-      "RESTful API Design", "WebSocket Protocol", "npm", "Postman API"
+      "RESTful API Design", "WebSocket Protocol", "npm", "Postman API",
+      "Node.js", "GraphQL"
     ] 
   },
   { 
-    category: "Systems & AI", 
+    category: "Systems", 
     items: [
       "Linux", "UNIX/GNU", "DevOps", "Windows", "Mac", "Networking",
-      "ML", "AI", "MLOps", "Computer Vision", "Real-time Systems",
-      "Docker", "OpenCV", "PyTorch", "eSIM/pSIM"
+      "Real-time Systems", "Docker", "eSIM/pSIM",
+      "Kubernetes", "Microservices Architecture", "Observability", "Serverless Computing"
+    ] 
+  },
+  { 
+    category: "AI", 
+    items: [
+      "ML", "AI", "MLOps", "Computer Vision", "OpenCV", "PyTorch",
+      "Generative AI", "Coding Agents"
     ] 
   },
   { 
     category: "Practices & Tools", 
-    items: ["Testing", "CI/CD", "Technical Documentation", "Agile", "Jira", "Debugging", "Pseudocode"] 
+    items: ["Testing", "CI/CD", "Technical Documentation", "Agile", "Jira", "Debugging", "Pseudocode", "SRE", "Prompt Engineering"] 
   },
   { 
     category: "Interpersonal", 

@@ -36,7 +36,7 @@ body.light-mode .skills-card:hover {
 
 .skill-label {
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--dim);
   text-transform: uppercase;
