@@ -398,7 +398,7 @@ body.light-mode .project-count-badge--filtered {
   max-width: 140px;
 }
 .mini-card img {
-  max-width: 80%;
+  max-width: 50%;
   border-radius: 8px;
   margin: 1em auto;
   display: block;

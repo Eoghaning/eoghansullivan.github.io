@@ -11,6 +11,7 @@ tags:
   - Computer Vision
   - JavaScript
   - React
+  - Vite
   - HTML/CSS
   - Git
   - GitHub

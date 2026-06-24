@@ -2,9 +2,9 @@
 
 **Languages:** Python, Java, JavaScript, TypeScript, C, Go, R, SQL, Haskell, Prolog, Shell, MATLAB, Bash, Rust
 
-**Libraries:** Pandas, Matplotlib, NumPy, SHAP
+**Libraries:** Pandas, Matplotlib, NumPy, SHAP, Recharts
 
-**Web:** React, Django, HTML/CSS, Git, GitHub, GitLab, Netlify, SQLite, Redis, Celery, Django Channels, Daphne, RESTful API Design, WebSocket Protocol, npm, Postman API, Node.js, GraphQL
+**Web:** React, Django, HTML/CSS, Tailwind CSS, Vite, Git, GitHub, GitLab, Netlify, SQLite, Redis, Celery, Django Channels, Daphne, RESTful API Design, WebSocket Protocol, npm, Postman API, Node.js, GraphQL, Full-Stack Web Development, JSON
 
 **Systems:** Linux, UNIX/GNU, DevOps, Windows, Mac, Networking, Real-time Systems, Docker, eSIM/pSIM, Kubernetes, Microservices Architecture, Observability, Serverless Computing
 
@@ -14,8 +14,10 @@
 
 **Interpersonal:** Teamwork, Communication, Problem Solving, Adaptability, Leadership, Time Management, Critical Thinking, Creativity
 
+**Design:** UI/UX Design
+
 ## Skills used in a project
-Python, JavaScript, React, Django, HTML/CSS, Git, GitHub, GitLab, Netlify, SQLite, Redis, Celery, Django Channels, Daphne, RESTful API Design, WebSocket Protocol, npm, ML, AI, Computer Vision, Real-time Systems, Docker, OpenCV, PyTorch, Testing, CI/CD, Technical Documentation, Agile, Teamwork, Communication, Problem Solving, Adaptability, C, Shell, Linux, UNIX/GNU, DevOps, SQL, Leadership, Time Management, Critical Thinking, Creativity
+Python, JavaScript, TypeScript, React, Django, HTML/CSS, Tailwind CSS, Vite, Recharts, Matplotlib, Git, GitHub, SQLite, SQL, JSON, Docker, RESTful API Design, npm, Full-Stack Web Development, UI/UX Design, Testing, Agile, Teamwork, Communication, Problem Solving, Critical Thinking, Leadership, Linux, DevOps, Windows
 
 ## Skills NOT yet in a project
-Java, TypeScript, Go, R, Haskell, Prolog, MATLAB, Bash, Rust, Pandas, Matplotlib, NumPy, SHAP, Postman API, Node.js, GraphQL, Windows, Mac, Networking, eSIM/pSIM, Kubernetes, Microservices Architecture, Observability, Serverless Computing, MLOps, Generative AI, Coding Agents, Jira, Debugging, Pseudocode, SRE, Prompt Engineering
+Java, C, Go, R, Haskell, Prolog, MATLAB, Bash, Rust, Pandas, NumPy, SHAP, GitLab, Netlify, Redis, Celery, Django Channels, Daphne, WebSocket Protocol, Postman API, Node.js, GraphQL, UNIX/GNU, Mac, Networking, Real-time Systems, eSIM/pSIM, Kubernetes, Microservices Architecture, Observability, Serverless Computing, ML, AI, MLOps, Computer Vision, OpenCV, PyTorch, Generative AI, Coding Agents, CI/CD, Jira, Debugging, Pseudocode, SRE, Prompt Engineering

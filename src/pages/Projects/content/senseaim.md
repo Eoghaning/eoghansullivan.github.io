@@ -5,6 +5,7 @@ desc: Community platform with ML-based gameplay analysis to detect cheating in u
 tags:
   - Django
   - React
+  - Vite
   - Python
   - SQL
   - ML

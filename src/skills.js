@@ -5,15 +5,15 @@ export const SKILLS = [
   },
   { 
     category: "Libraries", 
-    items: ["Pandas", "Matplotlib", "NumPy", "SHAP"] 
+    items: ["Pandas", "Matplotlib", "NumPy", "SHAP", "Recharts"] 
   },
   { 
     category: "Web", 
     items: [
-      "React", "Django", "HTML/CSS", "Git", "GitHub", "GitLab", "Netlify",
+      "React", "Django", "HTML/CSS", "Tailwind CSS", "Vite", "Git", "GitHub", "GitLab", "Netlify",
       "SQLite", "Redis", "Celery", "Django Channels", "Daphne",
       "RESTful API Design", "WebSocket Protocol", "npm", "Postman API",
-      "Node.js", "GraphQL"
+      "Node.js", "GraphQL", "Full-Stack Web Development", "JSON"
     ] 
   },
   { 
@@ -41,6 +41,10 @@ export const SKILLS = [
       "Teamwork", "Communication", "Problem Solving", "Adaptability",
       "Leadership", "Time Management", "Critical Thinking", "Creativity"
     ] 
+  },
+  { 
+    category: "Design", 
+    items: ["UI/UX Design"] 
   },
 ];
 
